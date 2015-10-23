@@ -1,6 +1,6 @@
 "use strict";
 
-(function(){
+(function() {
 	angular.module("FormBuilderApp").factory("UserService", UserService);
 
 	function UserService() {
@@ -79,4 +79,5 @@
 		  	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
 		    s4() + '-' + s4() + s4() + s4();
 		}
+	}
 })();
