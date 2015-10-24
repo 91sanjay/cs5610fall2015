@@ -14,6 +14,8 @@
 			updateUser: updateUser
 		}
 
+		return service;
+
 		function findUserByNameAndPassword(userName, password, callback) {
 			var currentUser = null;
 			for (var i=0;i<users.length;t++) {
