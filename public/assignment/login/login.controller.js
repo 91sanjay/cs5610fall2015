@@ -3,9 +3,11 @@
 (function(){
 	angular.module("FormBuilderApp").controller("LoginController", LoginController);
 
-	function LoginController($scope,$location,UserService) {
+	function LoginController($scope,$location,$rootScope,UserService) {
 
-		$scope.login = function(userName, password) {
+		$scope.login = login;
+
+		function login() {
 			var users = UserService.findAllUsers();
 
 			for(var i=0;i<users.length;i++) {
@@ -14,8 +16,7 @@
 					break;
 				}
 			}
-
-			$location = "/profile";
+			$location.path = ("/profile");
 		}
 	}
 })();

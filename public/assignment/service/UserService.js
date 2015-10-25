@@ -42,7 +42,7 @@
 			}
 
 			if (!usersExists) {
-				user.userId = guid();
+				user.id = guid();
 				users.push(user);
 			}
 
@@ -53,7 +53,7 @@
 			var index = null;
 
 			for(var i=0;i<users.length;i++) {
-				if (users[i].userId === userId) {
+				if (users[i].id === userId) {
 					index = i;
 					break;
 				}
@@ -66,10 +66,11 @@
 
 		function updateUser(userId, user, callback) {
 			for(var i=0; i<users.length;i++) {
-				if(users[i].userId === userId) {
+				if(users[i].id === userId) {
 					users[i] = user;
 				}
 			}
+			callback(user);
 		}
 
 		function guid() {
