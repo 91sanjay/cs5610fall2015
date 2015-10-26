@@ -19,28 +19,30 @@
 			form.id = guid();
 			form.userid = userId;
 
-			$scope.forms.push(form);
+			forms.push(form);
 
 			callback(form);
 		}
 
 		function findAllFormsForUser(userId, callback) {
-			var requiredForm = null;
+			var requiredForms = [];
 
 			for(var i=0;i<forms.length;i++) {
 				if (forms[i].userid === userId) {
-					requiredForm = forms[i];
-					break;
+					requiredForms.push(forms[i]);
 				}
 			}
 
-			callback(requiredForm);
+			callback(requiredForms);
 		}
 
 		function deleteFormById(formId, callback) {
 			for(var i=0;i<forms.length;i++) {
-				if(forms[i].id === formId) {
+				console.log(forms[i].id+"  "+formId);
+				if(forms[i].id == formId) {
+					console.log("equal");
 					forms.splice(i, 1);
+					break;
 				}
 			}
 

@@ -4,27 +4,53 @@
 	angular.module("FormBuilderApp").controller("FormController", FormController);
 
 	function FormController($scope,$location,$rootScope,FormService) {
+		var user = $rootScope.currentUser;
+		$scope.addForm = addForm;
+		$scope.updateForm = updateForm;
+		$scope.deleteForm = deleteForm;
+		$scope.selectForm = selectForm;
 
-		var currentForm = {"name": $scope.name};
+		function init() {
+			if (user == null) {
+				console.log("yes");
+				user = {"id": "1", "userName": "Default", "lastName": " ", "password": "password", "email": "default@default.com"};
+			}
 
-		FormService.FindAllFormsForUser($rootScope.currentUser.id, function(response) {
-			$scope.forms = response;
-		});
+			FormService.findAllFormsForUser(user.id, function(response) {
+				$scope.forms = response;
+			});
+		}
+
+		init();
 
 		function addForm() {
 			var newForm = null;
-			console.log("Yes");
-			FormService.createFormForUser($rootScope.currentUser.id, form, function(form) {
-				newForm = form;
-			})
+			var form = {"name": $scope.name};
 
-			$scope.forms.append(newForm);
+			FormService.createFormForUser(user.id, form, function(form) {
+				newForm = form;
+			});
+
+			$scope.forms.push(newForm);
 		}
 
 		function updateForm() {
-			FormService.updateFormById($rootScope.currentUser.userid, currentForm, function(form) {
+			console.log("Called");
+			FormService.updateFormById(user.id, currentForm, function(form) {
 				currentForm = form;
-			})
+			});
+		}
+
+		function deleteForm(index) {
+			var formId = $scope.forms[index].id;
+			FormService.deleteFormById(formId, function(forms) {
+				console.log("Form Deleted");
+				$scope.forms = forms;
+			});
+		}
+
+		function selectForm(formId) {
+
 		}
 	}
 })();

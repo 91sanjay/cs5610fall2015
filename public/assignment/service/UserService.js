@@ -18,8 +18,8 @@
 
 		function findUserByNameAndPassword(userName, password, callback) {
 			var currentUser = null;
-			for (var i=0;i<users.length;t++) {
-				if ((users[i].userName === userName) && (users[i].password = password)) {
+			for (var i=0;i<users.length;i++) {
+				if ((users[i].userName == userName) && (users[i].password == password)) {
 					currentUser = users[i];
 					break;
 				}
@@ -33,6 +33,7 @@
 
 		function createUser(user, callback) {
 			var usersExists = false;
+
 			for(var i=0;i<users.length;i++) {
 				if (users[i].userName === user.userName)  {
 					console.log("User name already exists");

@@ -4,20 +4,22 @@
 	angular.module("FormBuilderApp").controller("RegisterController", RegisterController);
 
 	function RegisterController($scope,$location,$rootScope,UserService) {
-
 		$scope.register = register;
-		var user = $rootScope.user;
 
 		function register() {
-			console.log("called");
-
-			var user = {"username": $scope.username, "password": $scope.password,"email": $scope.email};
+			var user = {"userName": $scope.userName, "password": $scope.password,"email": $scope.email};
+			console.log("Registering user "+user.userName);
 
 			UserService.createUser(user, function(user) {
-				if (user.id !== null) {
+				if (user.id != null) {
 					$location.path("/profile");
+				} else {
+					console.log("User already registered. Login to continue");
+					$location.path("/register");
 				}
 			});
+
+			$rootScope.currentUser = user;
 		}
 	}
 })();

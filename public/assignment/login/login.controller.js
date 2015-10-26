@@ -4,19 +4,22 @@
 	angular.module("FormBuilderApp").controller("LoginController", LoginController);
 
 	function LoginController($scope,$location,$rootScope,UserService) {
-
 		$scope.login = login;
 
 		function login() {
-			var users = UserService.findAllUsers();
+			var userName = $scope.userName;
+			var password = $scope.password;
 
-			for(var i=0;i<users.length;i++) {
-				if (users[i].userName === userName) {
-					$rootScope = users[i];
-					break;
+			UserService.findUserByNameAndPassword(userName, password, function(user) {
+				if (user !== null) {
+					console.log("Found "+user.userName);
+					$rootScope.currentUser = user;
+					$location.path("/profile");
+				} else {
+					console.log("Username does not exist. Please register to proceed.")
+					$location.path("/login");
 				}
-			}
-			$location.path = ("/profile");
+			})
 		}
 	}
 })();
