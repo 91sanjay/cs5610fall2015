@@ -13,7 +13,7 @@
             var password = $scope.password;
 
             UserService.findUserByNameAndPassword(userName, password, function(user) {
-                if (user !== null) {
+                if (user != null) {
                     console.log("Found " + user.userName);
                     $rootScope.currentUser = user;
                     $location.path("/profile");
