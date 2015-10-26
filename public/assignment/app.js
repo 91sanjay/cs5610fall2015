@@ -1,7 +1,7 @@
 "use strict";
 
-(function(){
+(function() {
 
-	var app = angular.module("FormBuilderApp", ["ngRoute"]);
+    var app = angular.module("FormBuilderApp", ["ngRoute"]);
 
 })();

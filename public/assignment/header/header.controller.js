@@ -1,9 +1,11 @@
 "use strict";
 
-(function(){
-	angular.module("FormBuilderApp").controller("HeaderController", HeaderController);
+(function() {
+    angular
+        .module("FormBuilderApp")
+        .controller("HeaderController", HeaderController);
 
-	function HeaderController($scope,$location) {
-		$scope.$location = $location;
-	}
+    function HeaderController($scope, $location) {
+        $scope.$location = $location;
+    }
 })();
