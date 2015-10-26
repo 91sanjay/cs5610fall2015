@@ -23,6 +23,7 @@
 
                 UserService.createUser(user, function(user) {
                     if (user.id != null) {
+                        console.log("Not Null");
                         $location.path("/profile");
                     } else {
                         console.log("User already registered. Login to continue");
