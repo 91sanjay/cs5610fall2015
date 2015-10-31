@@ -23,6 +23,9 @@
     height: 100%;
 }
 
+.page-offset {
+    padding-top: 30px;
+}
 /* Branding */
 .navbar-brand {
     color: #4B178F;
@@ -36,6 +39,7 @@
     background-color: #F6F7F7;
     height: 70px;
     padding-top: 10px;
+    z-index: 100;
 }
 
 .nav-link {
@@ -121,4 +125,17 @@
     font-family: inherit;
     line-height: 1.8;
     color: #9f9f9f;
+}
+
+/* Register view */
+
+.register-panel {
+    background-color: #ffffff;
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.register-panel h3 {
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 20px;
 }
