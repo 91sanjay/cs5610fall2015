@@ -1,0 +1,124 @@
+/*******************************************************************
+*  Stylesheet for RentEasy
+*  Author: Sanjay Rajashekhar
+********************************************************************/
+
+/* General layout styles */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.panel {
+    border-radius: 0;
+    border: 0;
+}
+
+.panel-custom {
+    background-color: #ffffff;
+    height: 100%;
+}
+
+/* Branding */
+.navbar-brand {
+    color: #4B178F;
+    font-family: 'Poiret One', cursive;
+    font-size: 1.9em;
+    font-weight: 900;
+}
+
+/* App Navigation */
+.navigation {
+    background-color: #F6F7F7;
+    height: 70px;
+    padding-top: 10px;
+}
+
+.nav-link {
+    color: #4B178F;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+/* Footer */
+
+.footer {
+    height: 400px;
+    background-color: #1f1f1f;
+    padding: 50px 0;
+}
+
+.link-set h5 {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.list-custom li {
+    margin: 22px 0;
+}
+
+.list-custom li a {
+    color: #787878;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.list-custom li a:hover {
+    color: #a1a1a1;
+    text-decoration: none;
+}
+
+/* Main view container */
+.main {
+    margin-top: 70px;
+    padding-bottom: 70px;
+    background-color: #fcfcfc;
+}
+
+/* Home page */
+.image-holder {
+    background: url(../img/try.jpg) center center no-repeat;
+    background-size: cover;
+    height: 450px;
+}
+
+.hero {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 40px;
+    color: #000000;
+}
+
+.hero-panel {
+    margin-left: 15px;
+    margin-right: -15px;
+    height: 250px;
+}
+
+.panel-heading {
+    /*background-color: #F03B55;*/
+    background-color: #f7f7f7;
+}
+
+.panel-heading h4 {
+    font-family: inherit;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.panel-body p {
+    padding: 0 50px;
+    font-family: inherit;
+    line-height: 1.8;
+    color: #9f9f9f;
+}
