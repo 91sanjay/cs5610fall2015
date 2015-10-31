@@ -26,6 +26,18 @@
 .page-offset {
     padding-top: 30px;
 }
+
+.form-panel {
+    background-color: #ffffff;
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form-panel h3 {
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 20px;
+}
+
 /* Branding */
 .navbar-brand {
     color: #4B178F;
@@ -129,13 +141,3 @@
 
 /* Register view */
 
-.register-panel {
-    background-color: #ffffff;
-    padding: 30px;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.register-panel h3 {
-    font-family: 'Montserrat', sans-serif;
-    padding-bottom: 20px;
-}
