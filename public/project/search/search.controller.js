@@ -1,3 +1,11 @@
-/**
- * Created by sanjay on 10/31/15.
- */
+"use strict";
+
+(function() {
+    angular
+        .module("RentEasy")
+        .controller("SearchController", SearchController);
+
+    function SearchController($scope, $location) {
+        $scope.$location = $location;
+    }
+})();

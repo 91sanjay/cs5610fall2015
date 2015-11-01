@@ -21,6 +21,18 @@
             templateUrl: "profile/profile.view.html",
             controller: "ProfileController"
         })
+        .when("/search", {
+            templateUrl: "search/search.view.html",
+            controller: "SearchController"
+        })
+        .when("/addListing", {
+            templateUrl: "addListing/addlisting.view.html",
+            controller: "AddListingController"
+        })
+        .when("/myListing", {
+            templateUrl: "myListings/myListings.view.html",
+            controller: "SearchController"
+        })
         .otherwise({
             redirectTo: "/home"
         });
