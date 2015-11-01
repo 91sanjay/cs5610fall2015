@@ -42,13 +42,21 @@
 .btn-custom {
     border: 0;
     padding: 10px 15px;
-    border-radius: 2px;
+    border-radius: 1px;
     background-color: #7a26e8;
     color: #ffffff;
 }
 
 .btn-custom:hover {
     color: #eeeeee;
+}
+
+.icon-bar {
+    background-color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+    
 }
 
 /* Branding */
@@ -72,13 +80,13 @@
     color: #4B178F;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    font-size: 1em;
+    font-size: 0.9em;
+    font-weight: 700;
 }
 
 /* Footer */
 
 .footer {
-    height: 400px;
     background-color: #1f1f1f;
     padding: 50px 0;
 }
@@ -131,7 +139,6 @@
 .hero-panel {
     margin-left: 15px;
     margin-right: -15px;
-    height: 250px;
 }
 
 .panel-heading {
@@ -156,3 +163,32 @@
 
 /* Register view */
 
+
+/* Search view */
+.search-container {
+    margin-top: 90px;
+    margin-bottom: 160px;
+}
+
+.search-form-input {
+    padding-right: 0;
+}
+
+.search-container h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search-box {
+    border-radius: 0 !important;
+ }
+
+.search-button {
+    padding: 13px 0;
+}
+
+@media screen and (max-width: 992px) {
+    .collapse {
+        display: none !important;
+    }
+
+}
