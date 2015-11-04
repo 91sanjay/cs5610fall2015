@@ -30,8 +30,12 @@
             controller: "AddListingController"
         })
         .when("/myListing", {
-            templateUrl: "myListings/myListings.view.html",
-            controller: "SearchController"
+            templateUrl: "myListing/myListing.view.html",
+            controller: "MyListingController"
+        })
+        .when("/result", {
+            templateUrl: "result/result.view.html",
+            controller: "ResultController"
         })
         .otherwise({
             redirectTo: "/home"

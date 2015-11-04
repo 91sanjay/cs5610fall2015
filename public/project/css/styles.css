@@ -55,10 +55,6 @@
     background-color: #000000;
 }
 
-@media screen and (max-width: 768px) {
-    
-}
-
 /* Branding */
 .navbar-brand {
     color: #4B178F;
@@ -69,11 +65,12 @@
 
 /* App Navigation */
 .navigation {
-    background-color: #F6F7F7;
+    background-color: #F7F7F7;
     height: 70px;
     padding-top: 10px;
     z-index: 100;
     box-shadow: 0 1px 0 #eeeeee;
+    /*F6F7F7*/
 }
 
 .nav-link {
@@ -84,8 +81,12 @@
     font-weight: 700;
 }
 
-/* Footer */
+.navbar-nav>.active>a {
+    color: #6720C4;
+    background-color: #eeeeee;
+}
 
+/* Footer */
 .footer {
     background-color: #1f1f1f;
     padding: 50px 0;
@@ -115,7 +116,7 @@
 .main {
     margin-top: 70px;
     padding-bottom: 70px;
-    background-color: #fcfcfc;
+    background-color: #fafafa;
 }
 
 /* Home page */
@@ -123,6 +124,15 @@
     background: url(../img/try.jpg) center center no-repeat;
     background-size: cover;
     height: 450px;
+}
+
+.search-prompt {
+    padding-top: 160px;
+}
+
+.search-prompt h3 {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .hero {
@@ -161,13 +171,9 @@
     color: #9f9f9f;
 }
 
-/* Register view */
-
-
 /* Search view */
 .search-container {
-    margin-top: 90px;
-    margin-bottom: 160px;
+    margin-bottom: 60px;
 }
 
 .search-form-input {
@@ -186,9 +192,126 @@
     padding: 13px 0;
 }
 
+/* Results View */
+.my-listing h3 {
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 3px solid #f68b00;
+    display: inline-block;
+    padding-bottom: 7px;
+}
+
+.property-list {
+    margin: 30px 0;
+    padding: 0;
+}
+
+.property {
+    background-color: #ffffff;
+    padding: 0 20px 30px 20px;
+    box-shadow: 2px 2px 2px #eeeeee;
+}
+
+.indicator {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 2em;
+    color: #A62B38;
+}
+
+.indicator:hover {
+    font-size: 2.3em;
+    transition: 0.2s font-size;
+}
+
+#edit-listing {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.edit-button {
+    border-radius: 1px;
+}
+
+.description h4 {
+    font-family: 'Open Sans', sans-serif;
+    color: #34343D;
+    font-weight: 700;
+}
+
+.description p {
+    font-family: inherit;
+    font-size: 1.1em;
+    line-height: 1.8;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    color: #919FA9;
+}
+
+.details li {
+    font-weight: 400;
+}
+
+.pinned h3 {
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 3px solid #b9006e;
+    display: inline-block;
+    padding-bottom: 7px;
+}
+
+.pinned-property h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.pinned-property a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #ffd935;
+    padding-top: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.pinned-property a:hover {
+    border-bottom: 2px solid #d73d32;
+    padding-bottom: 5px;
+}
+
+/* Result view */
+
+
+/* Responsive layout styles */
 @media screen and (max-width: 992px) {
-    .collapse {
-        display: none !important;
+
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-background {
+        background-color: #ffffff;
+        margin-top: 10px;
     }
 
+    .nav>li {
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .nav-link {
+        text-align: center;
+    }
+
+    .property {
+        padding: 0 10px 30px 0;
+    }
+
+    .description h4 {
+        margin-top: 10px;
+        font-size: 1em;
+    }
+
+    .description p {
+        font-size: 0.9em;
+    }
 }
