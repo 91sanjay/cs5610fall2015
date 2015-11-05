@@ -59,6 +59,12 @@
     background-color: #000000;
 }
 
+.icon-type {
+    font-size: 1.3em !important;
+    margin-top: 7px;
+    color: #8C8C8C;
+}
+
 .fire {
     color: #D75814;
 }
@@ -393,17 +399,9 @@
     margin-top: 7px;
 }
 
-.icon-type {
-    font-size: 1.3em !important;
-    margin-top: 7px;
-    color: #8C8C8C;
-}
-
 .places table {
     margin-left: 15px;
 }
-
-
 
 /* Responsive layout styles */
 @media screen and (max-width: 992px) {
