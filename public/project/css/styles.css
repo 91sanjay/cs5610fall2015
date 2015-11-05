@@ -13,6 +13,10 @@
     margin: 0;
 }
 
+.no-border td, .no-border tr {
+    border: none !important;
+}
+
 .panel {
     border-radius: 0;
     border: 0;
@@ -53,6 +57,22 @@
 
 .icon-bar {
     background-color: #000000;
+}
+
+.fire {
+    color: #D75814;
+}
+
+.car {
+    color: #1976D2;
+}
+
+.paw {
+    color: #000000;
+}
+
+.heartbeat {
+    color: #82000B;
 }
 
 /* Branding */
@@ -281,11 +301,121 @@
 }
 
 /* Result view */
+.back {
+    font-size: 2.8em !important;
+}
+
+.back-button {
+    position: absolute;
+    left: 40px;
+    color: #9E9E9E;
+}
+
+.back-button:hover {
+    color: #9E9E9E;
+    font-size: 1.1em !important;
+    transition: 0.2s font-size;
+}
+
+.pin {
+    position: absolute;
+    top: 63px;
+    right: 5px;
+    font-size: 2.5em !important;
+    color: #AD000E;
+}
+
+.pin:hover {
+    color: #7B000A;
+    font-size: 2.8em !important;
+}
+
+.detail-container {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    margin-top: 50px;
+}
+
+.property-address {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: -10px;
+}
+
+.property-description {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.property-info h4 {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 10px;
+    border-bottom: 3px solid #ffd935;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.places h4 {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 10px;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.location h4 {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 10px;
+    border-bottom: 3px solid #283593;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.price h2, .price h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.features {
+    padding: 10px 15px;
+}
+
+.t-row h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.t-row p {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 0;
+    margin-top: 7px;
+}
+
+.icon-type {
+    font-size: 1.3em !important;
+    margin-top: 7px;
+    color: #8C8C8C;
+}
+
+.places table {
+    margin-left: 15px;
+}
+
 
 
 /* Responsive layout styles */
 @media screen and (max-width: 992px) {
+    .property-address h2 {
+        font-size: 1.8em;
+        text-align: center;
+    }
 
+    .price h2, .price h3 {
+        display: inline-block;
+        margin-left: 20px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -302,10 +432,6 @@
         text-align: center;
     }
 
-    .property {
-        padding: 0 10px 30px 0;
-    }
-
     .description h4 {
         margin-top: 10px;
         font-size: 1em;
@@ -313,5 +439,28 @@
 
     .description p {
         font-size: 0.9em;
+    }
+
+    .property {
+        padding: 0 10px 30px 0;
+    }
+
+    .back-button {
+        left: 20px;
+    }
+
+    .property-address h2 {
+        font-size: 1.1em;
+        text-align: left;
+        margin-top: 70px;
+        vertical-align: bottom;
+    }
+
+    .detail-container {
+        margin-top: 40px;
+    }
+
+    .pin {
+        top: 40px;
     }
 }

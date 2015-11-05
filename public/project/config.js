@@ -38,7 +38,7 @@
             controller: "ResultController"
         })
         .otherwise({
-            redirectTo: "/home"
+           redirectTo: "/home"
         });
     }
 })();
