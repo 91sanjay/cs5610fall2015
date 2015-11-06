@@ -30,7 +30,7 @@
             controller: "AddListingController"
         })
         .when("/myListing", {
-            templateUrl: "myListing/myListing.view.html",
+            templateUrl: "myListing/mylisting.view.html",
             controller: "MyListingController"
         })
         .when("/result", {
