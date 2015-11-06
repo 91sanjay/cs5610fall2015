@@ -67,20 +67,20 @@
 
 // [END region_geolocation]
 
-
-    function getLatLng() {
-        console.log("called");
-        $.ajax({
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBV_EzW7aYIFA7OM_Iwf5yk_iFWP1Bkmc8',
-            type: 'GET',
-            dataType: 'json',
-            //data: {'address':'440 Huntington Ave, Boston, MA', 'key':'AIzaSyCxCuwaXJuIEB4UAZ1HEzSRjQnr2LIXnCc'},
-            success: print
-        });
-    }
-
-    getLatLng();
-
-    function print(r) {
-        console.log("response "+ r["status"]);
-    }
+    //   Trail of autocomplete feature
+    //function getLatLng() {
+    //    console.log("called");
+    //    $.ajax({
+    //        url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBV_EzW7aYIFA7OM_Iwf5yk_iFWP1Bkmc8',
+    //        type: 'GET',
+    //        dataType: 'json',
+    //        //data: {'address':'440 Huntington Ave, Boston, MA', 'key':'AIzaSyCxCuwaXJuIEB4UAZ1HEzSRjQnr2LIXnCc'},
+    //        success: print
+    //    });
+    //}
+    //
+    //getLatLng();
+    //
+    //function print(r) {
+    //    console.log("response "+ r["status"]);
+    //}
