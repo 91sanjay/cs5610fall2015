@@ -13,6 +13,10 @@
     margin: 0;
 }
 
+.no-padding {
+    padding: 0;
+}
+
 .no-border td, .no-border tr {
     border: none !important;
 }
@@ -107,7 +111,7 @@
     font-weight: 700;
 }
 
-.navbar-nav>.active>a {
+.navbar-nav > .active > a {
     color: #6720C4;
     background-color: #eeeeee;
 }
@@ -147,7 +151,7 @@
 
 /* Home page */
 .image-holder {
-    background: url(../img/try.jpg) center center no-repeat;
+    background: url(../img/living.jpg) center center no-repeat;
     background-size: cover;
     height: 450px;
 }
@@ -197,6 +201,55 @@
     color: #9f9f9f;
 }
 
+/* Add Listing */
+.listing-details {
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #eeeeee;
+}
+.form-holder label {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.listing-props {
+    padding: 15px 0;
+}
+
+#upload {
+    margin-left: 20px;
+}
+
+.radio {
+    display: inline-block;
+}
+
+.misc-details {
+    padding: 15px 0;
+}
+
+.option-no {
+    margin-left: 10px;
+}
+
+.form-wrap {
+    padding-top: 10px;
+}
+
+.form-wrap label {
+    padding-right: 15px;
+}
+
+#add-listing {
+    margin-top: 50px;
+}
+
+#choose {
+    margin-left: 15px;
+}
+
+#upload-modal {
+    margin-top: 150px;
+}
+
 /* Search view */
 .search-container {
     margin-bottom: 60px;
@@ -212,10 +265,15 @@
 
 .search-box {
     border-radius: 0 !important;
- }
+}
 
 .search-button {
     padding: 13px 0;
+}
+
+.search-image {
+    width: 100%;
+    height: 100%;
 }
 
 /* Results View */
@@ -270,7 +328,7 @@
     font-family: inherit;
     font-size: 1.1em;
     line-height: 1.8;
-    padding-top: 10px ;
+    padding-top: 10px;
     padding-bottom: 10px;
     color: #919FA9;
 }
@@ -334,6 +392,24 @@
 .pin:hover {
     color: #7B000A;
     font-size: 2.8em !important;
+}
+
+.gallery {
+    padding: 20px;
+}
+
+.images {
+    margin: 0 auto;
+}
+
+.images a{
+    padding: 5px 5px;
+}
+
+.images img {
+    margin: 10px 0;
+    width: 200px;
+    height: 150px;
 }
 
 .detail-container {
@@ -403,6 +479,19 @@
     margin-left: 15px;
 }
 
+.location {
+    height: 450px;
+}
+
+.location iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.places {
+    margin-top: 80px;
+}
+
 /* Responsive layout styles */
 @media screen and (max-width: 992px) {
     .property-address h2 {
@@ -422,7 +511,7 @@
         margin-top: 10px;
     }
 
-    .nav>li {
+    .nav > li {
         border-bottom: 1px solid #eeeeee;
     }
 
@@ -460,5 +549,18 @@
 
     .pin {
         top: 40px;
+    }
+
+    .images a{
+        padding: 15px 5px;
+    }
+
+    .images img {
+        width: 150px;
+        height: 100px;
+    }
+
+    .location {
+        height: 350px;
     }
 }
