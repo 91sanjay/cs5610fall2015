@@ -4,12 +4,11 @@ module.exports = function (app) {
 
     var api = {
         create: createUser,
+        update: updateUser,
+        delete: deleteUser,
         findAll: findAllUsers,
         findById: findUserById,
-        findUserByAuth: findUserByAuth,
-        updateUser: updateUser,
-        deleteUser: deleteUser,
-
+        findUserByAuth: findUserByAuth
     }
     return api;
 
@@ -18,6 +17,29 @@ module.exports = function (app) {
         user.push(user);
 
         return user;
+    }
+
+    function updateUser(id, updatedUser) {
+        for (var i=0; i<users.length; i++) {
+          if(users[i].id === id) {
+              for (var property in updatedUser) {
+                  user[i][property] = updatedUser[property];
+              }
+              return users[i];
+          }
+        }
+
+        return null;
+    }
+
+    function deleteUser(id) {
+        users.forEach(function(user) {
+            if (user.id === id) {
+                users.splice(users.indexOf(user), 1);
+            }
+        });
+
+        return users;
     }
 
     function findAllUsers() {
@@ -42,25 +64,5 @@ module.exports = function (app) {
         });
 
         return null;
-    }
-
-    function updateUser(id, updatedUser) {
-        var user = findUserById(id);
-
-        for(var property in updatedUser) {
-            user[property] = updatedUser[property];
-        }
-
-        return user;
-    }
-
-    function deleteUser(id) {
-        users.forEach(function(user) {
-           if (user.id === id) {
-               users.splice(users.indexOf(user), 1);
-           }
-        });
-
-        return users;
     }
 }
