@@ -8,6 +8,7 @@ module.exports = function (app) {
         delete: deleteUser,
         findAll: findAllUsers,
         findById: findUserById,
+        findByUserName: findByUserName,
         findUserByAuth: findUserByAuth
     }
     return api;
@@ -51,6 +52,16 @@ module.exports = function (app) {
            if (user.id === id) {
                return user;
            }
+        });
+
+        return null;
+    }
+
+    function findByUserName(username) {
+        users.forEach(function(user) {
+            if (user.username == username) {
+                return user;
+            }
         });
 
         return null;
