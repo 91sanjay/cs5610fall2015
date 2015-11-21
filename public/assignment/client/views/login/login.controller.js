@@ -16,7 +16,7 @@
                 then(function(user) {
                     $scope.user = user;
                     $rootScope.currentUser = user;
-                    $rootScope.$broadcast('auth', user);
+                    $rootScope.$broadcast('login', user);
                     $location.url("/profile");
                 });
         }
