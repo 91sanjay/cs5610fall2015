@@ -7,6 +7,7 @@
 
     function FormController($scope, $location, $rootScope, FormService) {
         var user = $rootScope.currentUser;
+        $scope.user = user;
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
@@ -14,20 +15,12 @@
         $scope.currentForm = null;
 
         function init() {
-            if (user == null) {
-                console.log("Creating Dummy User");
-                user = {
-                    "id": "1",
-                    "userName": "Default",
-                    "lastName": " ",
-                    "password": "password",
-                    "email": "default@default.com"
-                };
+            if ($scope.user){
+                FormService.findAllFormsForUser($scope.user.id)
+                    .then(function(forms) {
+                        $scope.forms = forms;
+                    });
             }
-
-            FormService.findAllFormsForUser(user.id, function(response) {
-                $scope.forms = response;
-            });
         }
 
         init();

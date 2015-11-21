@@ -15,9 +15,9 @@ module.exports = function (app) {
 
     function createUser(user) {
         user.id = uuid.v1();
-        user.push(user);
+        users.push(user);
 
-        return user;
+        return users;
     }
 
     function updateUser(id, updatedUser) {
@@ -48,32 +48,39 @@ module.exports = function (app) {
     }
 
     function findUserById(id) {
+        var userForId = null;
+
         users.forEach(function(user) {
-           if (user.id === id) {
-               return user;
+            console.log(user.id == id);
+           if (user.id == id) {
+               userForId = user;
            }
         });
 
-        return null;
+        return userForId;
     }
 
     function findByUserName(username) {
+        var userWithName = null;
+
         users.forEach(function(user) {
             if (user.username == username) {
-                return user;
+                userWithName = user;
             }
         });
 
-        return null;
+        return userWithName;
     }
 
     function findUserByAuth(username, password) {
+        var authUser = null;
+
         users.forEach(function(user) {
             if (user.username === username && user.password === password) {
-                return user;
+               authUser = user;
             }
         });
 
-        return null;
+        return authUser;
     }
 }
