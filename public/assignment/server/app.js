@@ -6,4 +6,5 @@ module.exports = function(app) {
 
     require("./services/user.service.js")(app, user);
     require("./services/form.service.js")(app, form);
+    require("./services/field.service.js")(app, form);
 }
