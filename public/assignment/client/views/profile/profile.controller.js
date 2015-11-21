@@ -8,31 +8,25 @@
     function ProfileController($scope, $rootScope, $location, UserService) {
 
         $scope.update = update;
-        var currentUser = $rootScope.currentUser;
+        $scope.user = $rootScope.currentUser;
 
-        function init() {
-            if (currentUser != null) {
-                $scope.userName = currentUser.userName;
-                $scope.firstName = currentUser.firstName;
-                $scope.lastName = currentUser.lastName;
-                $scope.email = currentUser.email;
-            }
-        }
-
-        init();
+        $rootScope.$on("login", function(event, user){
+            $scope.user = $rootScope.currentUser = user;
+        });
 
         function update() {
             var user = {
-                'userName': $scope.userName,
+                'username': $scope.username,
                 'password': $scope.password,
                 'firstName': $scope.firstName,
                 'lastName': $scope.lastName,
                 'email': $scope.email
             }
 
-            UserService.updateUser(currentUser.id, user, function(updatedUser) {
+            UserService.updateUser($scope.user.id, $scope.user).then(function(updatedUser) {
                 $rootScope.currentUser = updatedUser;
-            })
+                $scope.user = updatedUser;
+            });
         }
     }
 })();
