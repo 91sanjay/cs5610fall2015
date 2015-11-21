@@ -58,7 +58,7 @@
             return deferred.promise;
         }
 
-        function findAllUsers(callback) {
+        function findAllUsers() {
             var deferred = $q.defer();
             var url = '/api/assignment/user/';
 
@@ -72,7 +72,7 @@
             return deferred.promise;
         }
 
-        function findUserByNameAndPassword(userName, password, callback) {
+        function findUserByNameAndPassword(userName, password) {
             var deferred = $q.defer();
             var url = '/api/assignment/user?username=' + userName + "&password=" + password;
 
