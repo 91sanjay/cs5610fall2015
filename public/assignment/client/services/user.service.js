@@ -5,75 +5,85 @@
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
-    function UserService() {
-        var users = [];
-
+    function UserService($http, $q) {
         var service = {
-            findUserByNameAndPassword: findUserByNameAndPassword,
-            findAllUsers: findAllUsers,
             createUser: createUser,
+            updateUser: updateUser,
             deleteUserById: deleteUserById,
-            updateUser: updateUser
+            findAllUsers: findAllUsers,
+            findUserByNameAndPassword: findUserByNameAndPassword
         }
 
         return service;
 
-        function findUserByNameAndPassword(userName, password, callback) {
-            var currentUser = null;
-            for (var i = 0; i < users.length; i++) {
-                if ((users[i].userName == userName) && (users[i].password == password)) {
-                    currentUser = users[i];
-                    break;
-                }
-            }
-            callback(currentUser);
+        function createUser(user) {
+            var deferred = $q.defer();
+            var url = '/api/assignment/user';
+
+            $http.post(url, user)
+                .success(function(response){
+                    deferred.resolve(response);
+                }).error(function(error){
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        function updateUser(userId, user) {
+            var deferred = $q.defer();
+            var url = '/api/assignment/user/' + userId;
+
+            $http.put(url, user)
+                .success(function(response){
+                    deferred.resolve(response);
+                }).error(function(error){
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        function deleteUserById(userId) {
+            var deferred = $q.defer();
+            var url = '/api/assignment/user/' + userId;
+
+            $http.delete(url, user)
+                .success(function(response){
+                    deferred.resolve(response);
+                }).error(function(error){
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
         }
 
         function findAllUsers(callback) {
-            callback(users);
+            var deferred = $q.defer();
+            var url = '/api/assignment/user/';
+
+            $http.get(url)
+                .success(function(response){
+                    deferred.resolve(response);
+                }).error(function(error){
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
         }
 
-        function createUser(user, callback) {
-            var usersExists = false;
+        function findUserByNameAndPassword(userName, password, callback) {
+            var deferred = $q.defer();
+            var url = '/api/assignment/user?username=' + userName + "&password=" + password;
 
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].userName === user.userName) {
-                    console.log("User name already exists");
-                    usersExists = true;
-                    break;
-                }
-            }
+            $http.get(url)
+                .success(function(response){
+                    deferred.resolve(response);
+                }).error(function(error){
+                    deferred.reject(error);
+                });
 
-            if (!usersExists) {
-                user.id = guid();
-                users.push(user);
-            }
-
-            callback(user);
-        }
-
-        function deleteUserById(userId, callback) {
-            var index = null;
-
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].id === userId) {
-                    index = i;
-                    break;
-                }
-            }
-            if (index !== null) {
-                users.splice(index, 1);
-            }
-            callback(users)
-        }
-
-        function updateUser(userId, user, callback) {
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].id === userId) {
-                    users[i] = user;
-                }
-            }
-            callback(user);
+            return deferred.promise;
         }
 
         function guid() {
