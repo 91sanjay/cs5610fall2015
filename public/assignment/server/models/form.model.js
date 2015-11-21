@@ -23,19 +23,23 @@ module.exports = function(app) {
         form.id = uuid.v1();
         forms.push(form);
 
-        return form;
+        return forms;
     }
 
     function updateForm(id, updatedForm) {
+        var currentForm = null;
+
         for(var i=0; i<forms.length;i++) {
-            if (forms[i].id === id) {
+            if (forms[i].id == id) {
                 for (var property in updatedForm) {
                     forms[i][property] = updatedForm[property];
                 }
-                return users[i];
+                currentForm = forms[i];
+                break;
             }
         }
-        return null;
+
+        return currentForm;
     }
 
     function deleteForm(id) {
@@ -49,20 +53,22 @@ module.exports = function(app) {
     }
 
     function findFormById(id) {
+        var requiredForm = null;
+
         forms.forEach(function(form){
            if (form.id === id) {
-               return form;
+               requiredForm = form;
            }
         });
 
-        return null;
+        return requiredForm;
     }
 
     function findFormByUserId(userId) {
         var userForms = [];
 
         forms.forEach(function(form){
-            if (form.userId === userId) {
+            if (form.userId == userId) {
                 userForms.push(form);
             }
         });
@@ -71,13 +77,15 @@ module.exports = function(app) {
     }
 
     function findFormByTitle(title) {
+        var requiredForm = null;
+
         forms.forEach(function(form) {
             if (form.title === title) {
-                return form;
+                requiredForm = form;
             }
         });
 
-        return null;
+        return requiredForm;
     }
 
     function getFormFields(id) {

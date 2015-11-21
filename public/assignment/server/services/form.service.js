@@ -1,13 +1,14 @@
 "use strict";
 
 module.exports = function(app, model) {
-    app.post("api/assignment/:userId/form", createNewForm);
-    app.get("api/assignment/:userId/form", getFormsForUser);
-    app.get("api/assignment/form/:formId", getFormById);
-    app.delete("api/assignment/form/:formId", deleteFormById);
-    app.put("api/assignment/form/:formId", updateFormById);
+    app.post("/api/assignment/:userId/form", createNewForm);
+    app.get("/api/assignment/:userId/form", getFormsForUser);
+    app.get("/api/assignment/form/:formId", getFormById);
+    app.delete("/api/assignment/form/:formId", deleteFormById);
+    app.put("/api/assignment/form/:formId", updateFormById);
 
     function createNewForm(req, res) {
+        console.log("enter");
         var userId = req.params.userId;
         var form = req.body;
 
