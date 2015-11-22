@@ -13,6 +13,10 @@
   	margin-left: 13.33333337%;
   }
 }
+
+.no-padding {
+	padding: 0 !important;
+}
 /* End Custom grid definitions */
 
 .register-title {

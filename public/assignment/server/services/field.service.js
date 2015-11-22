@@ -14,13 +14,13 @@ module.exports = function(app, model) {
         res.json(model.createFormField(formId, field));
     }
 
-    function getFormFieldById(req, res) {
+    function getFieldsForForm(req, res) {
         var formId = req.params.formId;
 
         res.json(model.getFormFields(formId));
     }
 
-    function getFieldsForForm(req, res) {
+    function getFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req. params.fieldId;
 

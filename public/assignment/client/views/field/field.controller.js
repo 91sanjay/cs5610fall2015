@@ -26,7 +26,6 @@
             if($scope.selectedForm) {
                 FieldService.getFieldsForForm($scope.selectedForm.id).then(function (fields) {
                     $scope.fields = fields;
-                    console.log($scope.fields);
                 });
             }
         }
