@@ -1,5 +1,6 @@
 <div ng-show="user">
     <div ng-show="selectedForm">
+        <!-- ng-show="selectedForm"  ng-show="user"-->
         <h1 class="page-header">Forms {{selectedForm.title}}</h1>
         <div>
             <!-- Nav tabs -->
@@ -50,7 +51,7 @@
             </table>
             <div class="add-field">
                 <div class="col-xs-10 col-sm-7">
-                    <label for="new-field"></label>
+                    <label for="new-field">Add new Field</label>
                     <select name="select-field" ng-model="fieldType" id="new-field">
                         <option value="TEXT">Single Line Text Field</option>
                         <option value="DATE">Date Field</option>
@@ -65,6 +66,16 @@
                     <a href="" ng-click="addField(fieldType)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div ng-show="!selectedForm">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#/form">Forms</a></li>
+            <li role="presentation" class="active"><a ng-href="#/user/{{user.id}}/form/null/fields">Fields</a></li>
+        </ul>
+        <div class="alert alert-danger" role="alert">
+            <span>Please select a form to view its fields</span>
         </div>
     </div>
 </div>

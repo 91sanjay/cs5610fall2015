@@ -11,6 +11,7 @@
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
+        $scope.showFormFields = showFormFields;
         $scope.selectedForm = null;
 
         $rootScope.$on("login", function(event, user){
@@ -79,12 +80,11 @@
             var url = "/user/"+$scope.user.id+"/form/"+form.id+"/fields";
             $scope.selectedForm = form;
             $scope.formName = form.title;
-            $rootScope.selectedForm = $scope.selectedForm;
-            $rootScope.$broadcast("selectedForm", $scope.selectedForm);
+            $rootScope.selectedForm = form;
+            $rootScope.$broadcast('selectedForm', form);
+            console.log("Called "+url);
 
-
-            $location.url(url);
-
+            $location.path(url);
         }
     }
 })();

@@ -91,8 +91,11 @@ module.exports = function(app) {
 
     function getFormFields(id) {
         var requiredFields = null;
+
+        console.log(id);
         forms.forEach(function(form) {
-            if (form.id === id) {
+            if (form.id == id) {
+                console.log(form.fields);
                 requiredFields = form.fields;
             }
         });

@@ -8,6 +8,7 @@
     function FieldController($scope, $location, $rootScope, FieldService) {
         $scope.location = $location;
         $scope.user = $rootScope.currentUser;
+        $scope.selectedForm = $rootScope.selectedForm;
         $scope.fields = [];
         $scope.fieldType = null;
         $scope.addField = addField;
@@ -22,9 +23,12 @@
         });
 
         function initFields() {
-            FieldService.getFormFields($scope.selectedForm.id).then(function(fields) {
-                $scope.fields = fields;
-            });
+            if($scope.selectedForm) {
+                FieldService.getFieldsForForm($scope.selectedForm.id).then(function (fields) {
+                    $scope.fields = fields;
+                    console.log($scope.fields);
+                });
+            }
         }
 
         initFields();
