@@ -28,7 +28,7 @@
               </td>
             </tr>
             <tr ng-repeat="form in forms">
-              <td><a ng-click="showFormFields(form)" href="#/fields">{{ form.title }}</a></td>
+              <td><a ng-click="showFormFields(form)" href="#/user/{{user.id}}/form/{{form.id}}/fields">{{ form.title }}</a></td>
               <td>
                 <a ng-click="deleteForm(form.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 <a ng-click="deleteForm(form.id)"><span class="sr-only">Delete Form</span></a>

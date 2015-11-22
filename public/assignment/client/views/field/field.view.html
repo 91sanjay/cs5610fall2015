@@ -1,0 +1,70 @@
+<div ng-show="user">
+    <div ng-show="selectedForm">
+        <h1 class="page-header">Forms {{selectedForm.title}}</h1>
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="#/form">Forms</a></li>
+                <li role="presentation" class="active"><a ng-href="#/user/{{user.id}}/form/{{selectedForm.id}}/fields">Fields</a></li>
+            </ul>
+
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="field in form.fields">
+                        <td ng-switch="field.type" class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label for="{{field.id}}">{{field.label}}</label>
+                                <input type="text" ng-switch-when="TEXT" class="form-control" id="{{field.id}}" placeholder={{field.placeholder}}"/>
+                                <input type="date" ng-switch-when="DATE" class="form-control"  placeholder={{field.placeholder}}"/>
+                                <input type="email" ng-switch-when="EMAIL" class="form-control"  placeholder={{field.placeholder}}"/>
+                                <textarea ng-switch-when="TEXTAREA" class="form-control" rows="3"></textarea>
+                                <div ng-switch-when="CHECKBOXES">
+                                    <div ng-repeat="option in field.options" class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="{{option.value}}">
+                                            {{option.label}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div ng-switch-when="RADIOS">
+                                    <div ng-repeat="option in field.options" class="radio">
+                                        <label>
+                                            <input type="radio" name="{{field.name}}" value="{{option.value}}">
+                                            {{option.label}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <select ng-switch-when="OPTIONS" class="form-control">
+                                    <option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="col-xs-12 col-sm-6">
+                            <a><span class="glyphicon glyphicon-pencil input-group-addon" aria-hidden="true"></span></a>
+                            <a><span class="glyphicon glyphicon-plus input-group-addon" aria-hidden="true"></span></a>
+                            <a ng-click="removeField(field)"><span class="glyphicon glyphicon-remove input-group-addon" aria-hidden="true"></span></a>
+                            <a><span class="glyphicon glyphicon-align-justify input-group-addon" aria-hidden="true"></span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="add-field">
+                <div class="col-xs-10 col-sm-7">
+                    <label for="new-field"></label>
+                    <select name="select-field" ng-model="fieldType" id="new-field">
+                        <option value="TEXT">Single Line Text Field</option>
+                        <option value="DATE">Date Field</option>
+                        <option value="EMAIL">Email Field</option>
+                        <option value="TEXTAREA">Multi Line Text Field</option>
+                        <option value="OPTIONS">Drop Down Field</option>
+                        <option value="RADIOS">Radio Button Field</option>
+                        <option value="CHECKBOXES">Checkboxes field</option>
+                    </select>
+                </div>
+                <div class="col-xs-2 col-sm-5">
+                    <a href="" ng-click="addField(fieldType)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
