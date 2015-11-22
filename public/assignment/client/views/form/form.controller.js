@@ -79,6 +79,7 @@
             var url = "/user/"+$scope.user.id+"/form/"+form.id+"/fields";
             $scope.selectedForm = form;
             $scope.formName = form.title;
+            $rootScope.selectedForm = $scope.selectedForm;
             $rootScope.$broadcast("selectedForm", $scope.selectedForm);
 
 
