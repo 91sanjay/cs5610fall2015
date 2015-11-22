@@ -17,7 +17,7 @@
 
         function createFormForUser(userId, form) {
             var deferred = $q.defer();
-            var url = '/api/assignment/user/' + userId + '/form';
+            var url = '/api/assignment/' + userId + '/form';
 
             $http.post(url, form)
                 .success(function(response){
@@ -31,7 +31,7 @@
 
         function findAllFormsForUser(userId) {
             var deferred = $q.defer();
-            var url = '/api/assignment/user/' + userId + '/form';
+            var url = '/api/assignment/' + userId + '/form';
 
             $http.get(url)
                 .success(function(response){
@@ -47,7 +47,7 @@
             var deferred = $q.defer();
             var url = '/api/assignment/form/' + formId;
 
-            $http.post(url)
+            $http.delete(url)
                 .success(function(response){
                     deferred.resolve(response);
                 }).error(function(error){

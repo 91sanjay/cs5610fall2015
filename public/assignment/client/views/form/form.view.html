@@ -1,10 +1,10 @@
-<div ng-if="user">
-  <div ng-if="selectedForm">
+<div ng-show="user">
+  <div>
     <h1 class="page-header">Forms {{selectedForm.title}}</h1>
     <div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#form">Forms</a></li>
+        <li role="presentation" class="active"><a href="#/form">Forms</a></li>
         <li role="presentation"><a ng-href="#/user/{{user.id}}/form/null/fields">Fields</a></li>
       </ul>
 
@@ -28,7 +28,7 @@
               </td>
             </tr>
             <tr ng-repeat="form in forms">
-              <td><a ng-click="showFormFields(form)">{{ form.name }}</a></td>
+              <td><a ng-click="showFormFields(form)" href="#/fields">{{ form.title }}</a></td>
               <td>
                 <a ng-click="deleteForm(form.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 <a ng-click="deleteForm(form.id)"><span class="sr-only">Delete Form</span></a>
@@ -46,7 +46,7 @@
     </div>
   </div>
 </div>
-<div ng-if="!user">
+<div ng-show="!user">
   <div class="alert alert-danger" role="alert">
     <span>Please <a href="#/login">Login</a> to view your forms</span>
   </div>

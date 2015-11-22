@@ -40,7 +40,7 @@ module.exports = function(app) {
             }
         }
 
-        return currentForm;
+        return forms;
     }
 
     function deleteForm(id) {
