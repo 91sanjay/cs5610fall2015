@@ -9,7 +9,5 @@ module.exports = function(mongoose) {
         "email": String
     });
 
-    this.getSchema = function() {
-        return UserSchema;
-    }
+    return UserSchema;
 }
