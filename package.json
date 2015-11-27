@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "body-parser": "^1.14.1",
+    "mongoose": "^4.2.7",
     "node-uuid": "^1.4.7"
   },
   "bundleDependencies": [],
