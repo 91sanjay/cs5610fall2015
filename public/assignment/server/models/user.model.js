@@ -1,6 +1,11 @@
-module.exports = function (app) {
+"use strict"
+
+var q = require("q");
+
+module.exports = function (app, mongoose, db) {
     var users = require("./user.mock.json");
-    var uuid = require('node-uuid');
+    var userSchema = require('./user.schema.js')(mongoose);
+    var model = mongoose.model("cs5610.assignment.user", userSchema);
 
     var api = {
         create: createUser,
@@ -13,74 +18,110 @@ module.exports = function (app) {
     }
     return api;
 
-    function createUser(user) {
-        user.id = uuid.v1();
-        users.push(user);
+    function createUser(newUser) {
+        var deferred = q.defer();
 
-        return users;
+        model.create(newUser, function(err, user) {
+            if (err) {
+                deferred.reject(user);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
     }
 
-    function updateUser(id, updatedUser) {
-        for (var i=0; i<users.length; i++) {
-          if(users[i].id === id) {
-              for (var property in updatedUser) {
-                  user[i][property] = updatedUser[property];
-              }
-              return users[i];
-          }
-        }
+    function updateUser(id, user) {
+        var deferred = q.defer();
 
-        return null;
+        model.findById(id, function(err, updateUser) {
+            updateUser.firstName = user.firstName;
+            updateUser.lastName = user.lastName;
+            updateUser.username = user.username;
+            updateUser.password = user.password;
+            updateUser.email = user.email;
+
+            updateUser.save(function(err, updatedUser) {
+               if (err) {
+                   deferred.reject(updatedUser);
+               } else {
+                   deferred.resolve(updatedUser);
+               }
+            });
+        });
+
+        return deferred.promise;
+
     }
 
     function deleteUser(id) {
-        users.forEach(function(user) {
-            if (user.id === id) {
-                users.splice(users.indexOf(user), 1);
-            }
-        });
+        var deferred = q.defer();
 
-        return users;
-    }
-
-    function findAllUsers() {
-        return users;
-    }
-
-    function findUserById(id) {
-        var userForId = null;
-
-        users.forEach(function(user) {
-            console.log(user.id == id);
-           if (user.id == id) {
-               userForId = user;
+        model.remove({_id: id}, function(err, status) {
+           if (err) {
+               deferred.reject(status);
+           } else {
+               deferred.resolve(status);
            }
         });
 
-        return userForId;
+        return deferred.promise;
+    }
+
+    function findAllUsers() {
+        var deferred = q.defer();
+
+        model.find(function(err, users) {
+            if(err) {
+                deferred.reject(users);
+            } else {
+                deferred.resolve(users);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function findUserById(id) {
+        var deferred = q.defer();
+
+        model.findById({_id: id}, function(err, user) {
+            if (err) {
+                deferred.reject(user);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
     }
 
     function findByUserName(username) {
-        var userWithName = null;
+        var deferred = q.defer();
 
-        users.forEach(function(user) {
-            if (user.username == username) {
-                userWithName = user;
+        model.findOne({username: username}, function(err, user) {
+            if (err) {
+                deferred.reject(user);
+            } else {
+                deferred.resolve(user);
             }
         });
 
-        return userWithName;
+        return deferred.promise;
     }
 
     function findUserByAuth(username, password) {
-        var authUser = null;
+        var deferred = q.defer();
 
-        users.forEach(function(user) {
-            if (user.username === username && user.password === password) {
-               authUser = user;
+        model.findOne({username: username, password: password}, function(err, user) {
+            if (err) {
+                deferred.reject(user);
+            } else {
+                deferred.resolve(user);
             }
         });
 
-        return authUser;
+        return deferred.promise;
     }
-}
+};
