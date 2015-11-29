@@ -45,19 +45,6 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.findById(id, function(err, form) {
             form.title = updateForm.title;
-            //form.userId = updateForm.userId;
-            //
-            //for (var i=0; i<forms.fields.length; i++) {
-            //    if (forms.fields[i]._id == updateForm._id) {
-            //        var field = forms.field[i];
-            //        var updateField = updateForm.fields[i]
-            //
-            //        field.label = updateField.label;
-            //        field.fieldType = updateField.fieldType;
-            //        field.options = updateField.options;
-            //        field.placeholder = updateField.placeholder;
-            //    }
-            //}
 
             form.save(function(err, form) {
                if (err) {
