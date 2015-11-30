@@ -10,4 +10,4 @@ module.exports = function (mongoose) {
     }, {collection: 'cs5610.assignment.user'});
 
     return UserSchema;
-}
+};

@@ -12,31 +12,46 @@ module.exports = function(app, model) {
         var userId = req.params.userId;
         var form = req.body;
 
-        res.json(model.create(form));
+        model.create(form)
+            .then(function(forms) {
+                res.json(forms);
+            });
     }
 
     function getFormsForUser(req, res) {
         var userId = req.params.userId;
 
-        res.json(model.findByUser(userId));
+        model.findByUser(userId)
+            .then(function(forms) {
+                res.json(forms);
+            });
     }
 
     function getFormById(req, res) {
         var formId = req.params.formId;
 
-        res.json(model.findById(formId));
+        model.findById(formId)
+            .then(function(form) {
+                res.json(form);
+            });
     }
 
     function deleteFormById(req, res) {
         var formId = req.params.formId;
 
-        res.json(model.delete(formId));
+        model.delete(formId)
+            .then(function(forms) {
+                res.json(forms);
+            });
     }
 
     function updateFormById(req, res) {
         var formId = req.params.formId;
         var updatedForm = req.body;
 
-        res.json(model.update(formId, updatedForm));
+        model.update(formId, updatedForm)
+            .then(function(form) {
+                res.json(form);
+            });
     }
 };
