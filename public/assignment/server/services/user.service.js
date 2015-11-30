@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(app, model) {
+module.exports = function (app, model) {
     app.post("/api/assignment/user", createUser);
     app.get("/api/assignment/user", findUsers);
     app.get("/api/assignment/user/:id", findUserById);
@@ -18,29 +18,49 @@ module.exports = function(app, model) {
         var password = req.query.password;
 
         if (username == null && password == null) {
-           res.json(model.findAll());
+            model.findAll()
+                .then(function (users) {
+                    res.json(users);
+                });
         } else if (username != null && password == null) {
-            res.json(model.findByUserName(username));
+            model.findByUserName(username)
+                .then(function (user) {
+                    res.json(user);
+                });
         } else {
-            res.json(model.findUserByAuth(username, password));
+            model.findUserByAuth(username, password)
+                .then(function (user) {
+                    res.json(user);
+                });
         }
     }
 
     function findUserById(req, res) {
         var id = req.params.id;
 
-        res.json(model.findById(id));
+        model.findById(id)
+            .then(function (user) {
+                res.json(user);
+            });
     }
 
     function updateUser(req, res) {
         var user = req.body;
         var id = req.params.id;
 
-        res.json(model.update(id, user));
+        model.update(id, user)
+            .then(function (updatedUser) {
+                res.json(updatedUser);
+            });
     }
 
     function deleteUser(req, res) {
         var id = req.params.id;
+
+        model.delete(id)
+            .then(function (users) {
+                res.json(users);
+            });
 
         res.json(model.delete(id));
     }
