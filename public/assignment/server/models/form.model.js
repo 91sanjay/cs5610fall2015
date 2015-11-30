@@ -30,7 +30,7 @@ module.exports = function(app, mongoose, db) {
         FormModel.create(newForm, function(err, form) {
             FormModel.find(function(err, forms) {
                if (err) {
-                   deferred.reject(forms);
+                   deferred.reject(err);
                } else {
                    deferred.resolve(forms);
                }
@@ -48,7 +48,7 @@ module.exports = function(app, mongoose, db) {
 
             form.save(function(err, form) {
                if (err) {
-                   deferred.reject(form);
+                   deferred.reject(err);
                } else {
                    deferred.resolve(form);
                }
@@ -63,7 +63,7 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.remove({_id: id}, function(err, status) {
             if (err) {
-                deferred.reject(status);
+                deferred.reject(err);
             } else {
                 deferred.resolve(status);
             }
@@ -77,7 +77,7 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.findById(id, function(err, form) {
             if (err) {
-                deferred.reject(form);
+                deferred.reject(err);
             } else {
                 deferred.resolve(form);
             }
@@ -91,7 +91,7 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.findOne({userId: userId}, function(err, form) {
            if (err) {
-               deferred.reject(form);
+               deferred.reject(err);
            } else {
                deferred.resolve(form);
            }
@@ -105,7 +105,7 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.findOne({title: title}, function(err, form) {
             if (err) {
-                deferred.reject(form);
+                deferred.reject(err);
             } else {
                 deferred.resolve(form);
             }
@@ -119,7 +119,7 @@ module.exports = function(app, mongoose, db) {
 
         FormModel.findById(id, function(err, form) {
             if (err) {
-                deferred.reject(form);
+                deferred.reject(err);
             } else {
                 deferred.resolve(form.fields);
             }
@@ -154,9 +154,9 @@ module.exports = function(app, mongoose, db) {
 
             form.save(function(err, updatedForm) {
                 if (err) {
-                    deferred.reject(updatedForm);
+                    deferred.reject(err);
                 } else {
-                    deferred.resolve(form);
+                    deferred.resolve(updatedForm);
                 }
             });
         });
@@ -180,7 +180,7 @@ module.exports = function(app, mongoose, db) {
 
             form.save(function(err, updatedForm) {
                 if (err) {
-                    deferred.reject(updatedForm);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(updatedForm);
                 }
@@ -208,7 +208,7 @@ module.exports = function(app, mongoose, db) {
 
             form.save(function(err, form) {
                 if (err) {
-                    deferred.reject(form);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(form);
                 }
