@@ -23,7 +23,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.create(newUser, function(err, user) {
             if (err) {
-                deferred.reject(user);
+                deferred.reject(err);
             } else {
                 deferred.resolve(user);
             }
@@ -44,7 +44,7 @@ module.exports = function (app, mongoose, db) {
 
             updateUser.save(function(err, updatedUser) {
                if (err) {
-                   deferred.reject(updatedUser);
+                   deferred.reject(err);
                } else {
                    deferred.resolve(updatedUser);
                }
@@ -60,7 +60,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.remove({_id: id}, function(err, status) {
            if (err) {
-               deferred.reject(status);
+               deferred.reject(err);
            } else {
                deferred.resolve(status);
            }
@@ -74,7 +74,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.find(function(err, users) {
             if(err) {
-                deferred.reject(users);
+                deferred.reject(err);
             } else {
                 deferred.resolve(users);
             }
@@ -88,7 +88,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.findById({_id: id}, function(err, user) {
             if (err) {
-                deferred.reject(user);
+                deferred.reject(err);
             } else {
                 deferred.resolve(user);
             }
@@ -102,7 +102,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.findOne({username: username}, function(err, user) {
             if (err) {
-                deferred.reject(user);
+                deferred.reject(err);
             } else {
                 deferred.resolve(user);
             }
@@ -116,7 +116,7 @@ module.exports = function (app, mongoose, db) {
 
         UserModel.findOne({username: username, password: password}, function(err, user) {
             if (err) {
-                deferred.reject(user);
+                deferred.reject(err);
             } else {
                 deferred.resolve(user);
             }
