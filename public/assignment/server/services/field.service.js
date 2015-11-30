@@ -11,27 +11,39 @@ module.exports = function(app, model) {
         var formId = req.params.formId;
         var field = req.body;
 
-        res.json(model.createFormField(formId, field));
+        model.createFormField(formId, field)
+            .then(function (form) {
+               res.json(form);
+            });
     }
 
     function getFieldsForForm(req, res) {
         var formId = req.params.formId;
 
-        res.json(model.getFormFields(formId));
+        model.getFormFields(formId)
+            .then(function(fields) {
+                res.json(fields);
+            });
     }
 
     function getFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req. params.fieldId;
 
-        res.json(model.getFieldForForm(formId, fieldId));
+        model.getFieldsForForm(formId, fieldId)
+            .then(function(field) {
+                res.json(field);
+            });
     }
 
     function deleteFormFieldById(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
 
-        res.json(model.removeFormField(formId, fieldId));
+        model.removeFormField(formId, fieldId)
+            .then(function (form) {
+                res.json(form);
+            });
     }
 
     function updateFormFieldById(req, res) {
@@ -39,6 +51,9 @@ module.exports = function(app, model) {
         var fieldId = req. params.fieldId;
         var field = req.body;
 
-        res.json(model.updateFormField(formId, fieldId, field));
+        model.updateFormField(formId, fieldId, field)
+            .then(function (form) {
+                res.json(form);
+            });
     }
-}
+};
