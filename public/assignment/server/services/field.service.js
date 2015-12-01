@@ -13,7 +13,7 @@ module.exports = function(app, model) {
 
         model.createFormField(formId, field)
             .then(function (form) {
-               res.json(form);
+               res.json(form.fields);
             });
     }
 
