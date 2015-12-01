@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+(function () {
     angular
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);
@@ -19,7 +19,7 @@
                 } else {
                     UserService.findAllUsers()
                         .then(function (users) {
-                            console.log(users);
+
                             for (var i = 0; i < users.length; i++) {
                                 if (users[i].username === $scope.userName) {
                                     var message = "User Name already exists. Please choose a different one. We accept only letters and numbers in usernames";
@@ -31,7 +31,7 @@
                                     }
                                 }
                                 if (users[i].email === $scope.email) {
-                                    var message = "Email already in use"
+                                    var message = "Email already in use";
 
                                     if ($scope.regError) {
                                         $scope.regError += " | " + message;
@@ -42,7 +42,6 @@
                             }
 
                             if (!$scope.regError) {
-                                console.log("enter "+$scope.regError);
                                 var user = {
                                     username: $scope.userName,
                                     password: $scope.password,
@@ -50,7 +49,7 @@
                                 };
 
                                 UserService.createUser(user)
-                                    .then(function(newUser){
+                                    .then(function (newUser) {
                                         $rootScope.currentUser = newUser;
                                         $rootScope.$broadcast('login', newUser);
                                         $location.url('/profile');

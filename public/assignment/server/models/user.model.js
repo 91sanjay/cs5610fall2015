@@ -20,6 +20,7 @@ module.exports = function (app, mongoose, db) {
 
     function createUser(newUser) {
         var deferred = q.defer();
+        newUser.id = newUser._id = mongoose.Types.ObjectId();
 
         UserModel.create(newUser, function (err, user) {
             if (err) {
