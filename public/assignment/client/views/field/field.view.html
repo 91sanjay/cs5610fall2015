@@ -51,18 +51,20 @@
             </table>
             <div class="add-field">
                 <div class="col-xs-10 col-sm-7">
-                    <label for="new-field">Add new Field</label>
-                    <select name="select-field" ng-model="fieldType" id="new-field">
-                        <option value="TEXT">Single Line Text Field</option>
-                        <option value="DATE">Date Field</option>
-                        <option value="EMAIL">Email Field</option>
-                        <option value="TEXTAREA">Multi Line Text Field</option>
-                        <option value="OPTIONS">Drop Down Field</option>
-                        <option value="RADIOS">Radio Button Field</option>
-                        <option value="CHECKBOXES">Checkboxes field</option>
-                    </select>
+                    <div class="form-group">
+                        <label for="new-field">Add new Field</label>
+                        <select name="select-field" class="form-control" ng-model="fieldType" id="new-field">
+                            <option value="TEXT">Single Line Text Field</option>
+                            <option value="DATE">Date Field</option>
+                            <option value="EMAIL">Email Field</option>
+                            <option value="TEXTAREA">Multi Line Text Field</option>
+                            <option value="OPTIONS">Drop Down Field</option>
+                            <option value="RADIOS">Radio Button Field</option>
+                            <option value="CHECKBOXES">Checkboxes field</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-xs-2 col-sm-5">
+                <div class="col-xs-2 col-sm-5 add-new-button">
                     <a href="" ng-click="addField(fieldType)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                 </div>
             </div>

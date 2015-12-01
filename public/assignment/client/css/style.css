@@ -5,83 +5,92 @@
 
 /* Custom column and offset definitions for grid */
 @media (min-width: 992px) {
-  .col-cust-1 {
-    width: 13.33333337%;
-  }
+    .col-cust-1 {
+        width: 13.33333337%;
+    }
 
-  .col-cust-offset-1 {
-  	margin-left: 13.33333337%;
-  }
+    .col-cust-offset-1 {
+        margin-left: 13.33333337%;
+    }
 }
 
 .no-padding {
-	padding: 0 !important;
+    padding: 0 !important;
 }
+
 /* End Custom grid definitions */
 
 .register-title {
-	text-align: right;
-	margin-left: 1em;
+    text-align: right;
+    margin-left: 1em;
 }
 
 .btn-cust {
-	width: 100%;
+    width: 100%;
 }
 
 .tool-tip {
-	display: none;
+    display: none;
 }
 
 .tab-content {
-	padding-top: 20px;
+    padding-top: 20px;
 }
 
 .action-set {
-	margin: 20px 0 0 0;
-	text-align: right;
+    margin: 20px 0 0 0;
+    text-align: right;
 }
 
 .wrap {
-	border-top: 1px solid #9d9d9d;
+    border-top: 1px solid #9d9d9d;
 }
 
 .add-new {
-	padding-top: 10px;
+    padding-top: 10px;
+}
+
+.add-new-button {
+    padding-top: 25px;
 }
 
 @media screen and (max-width: 767px) {
-	.glyphicon {
-		font-size: 1.4em;
-		padding-right: 5px;
-	}
+    .glyphicon {
+        font-size: 1.4em;
+        padding-right: 5px;
+    }
 
-	.glyphicon-triangle-bottom {
-		font-size: 0.8em;
-	}
+    .glyphicon-triangle-bottom {
+        font-size: 0.8em;
+    }
 
-	.admin {
-		font-size: 0.9em;
-	}
+    .admin {
+        font-size: 0.9em;
+    }
+
+    .add-new-button {
+        padding-top: 30px;
+    }
 }
 
 @media (min-width: 768px) {
-  .align-left{
-    text-align: left !important;
-  }
+    .align-left {
+        text-align: left !important;
+    }
 
-  .glyphicon {
-  	font-size: 1.8em;
-  	padding-right: 20px;
-  }
+    .glyphicon {
+        font-size: 1.8em;
+        padding-right: 20px;
+    }
 
-  .glyphicon-triangle-bottom {
-		font-size: 1em;
-	}
+    .glyphicon-triangle-bottom {
+        font-size: 1em;
+    }
 }
 
 @media screen and (max-width: 380px) {
-	.tool-tip {
-		display: block;
-		margin-top: -15px;
-	}
+    .tool-tip {
+        display: block;
+        margin-top: -15px;
+    }
 }
