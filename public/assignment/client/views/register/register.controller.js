@@ -6,9 +6,14 @@
         .controller("RegisterController", RegisterController);
 
     function RegisterController($scope, $location, $rootScope, UserService) {
+        $scope.$location = $location;
         $scope.register = register;
 
         function register() {
+
+        }
+
+        function rregister() {
             var userName = $scope.userName;
             var password = $scope.password;
             var email = $scope.email;
@@ -24,7 +29,7 @@
                 UserService.createUser(user, function(user) {
                     if (user.id != null) {
                         console.log("Not Null");
-                        $location.path("/profile");
+                        $location.url("/profile");
                     } else {
                         console.log("User already registered. Login to continue");
                         $location.path("/register");

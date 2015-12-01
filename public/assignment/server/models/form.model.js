@@ -7,13 +7,12 @@ module.exports = function(app, mongoose, db) {
     var formSchema = require('./form.schema.js')(mongoose);
     var FormModel = mongoose.model("cs5610.assignment.form", formSchema);
 
-
     var api = {
         create: createForm,
         update: updateForm,
         delete: deleteForm,
         findById: findFormById,
-        findByUser: findFormByUserId,
+        findByUser: findFormsByUserId,
         findByTitle: findFormByTitle,
         getFormFields: getFormFields,
         getFieldForForm: getFieldForForm,
@@ -24,11 +23,11 @@ module.exports = function(app, mongoose, db) {
 
     return api;
 
-    function createForm(newForm) {
+    function createForm(userId, newForm) {
         var deferred = q.defer();
 
         FormModel.create(newForm, function(err, form) {
-            FormModel.find(function(err, forms) {
+            FormModel.find({userId: userId},function(err, forms) {
                if (err) {
                    deferred.reject(err);
                } else {
@@ -86,14 +85,14 @@ module.exports = function(app, mongoose, db) {
         return deferred.promise;
     }
 
-    function findFormByUserId(userId) {
+    function findFormsByUserId(userId) {
         var deferred = q.defer();
 
-        FormModel.findOne({userId: userId}, function(err, form) {
+        FormModel.find({userId: userId}, function(err, forms) {
            if (err) {
                deferred.reject(err);
            } else {
-               deferred.resolve(form);
+               deferred.resolve(forms);
            }
         });
 

@@ -6,7 +6,7 @@
         .controller("ProfileController", ProfileController);
 
     function ProfileController($scope, $rootScope, $location, UserService) {
-
+        $scope.location = $location;
         $scope.update = update;
         $scope.user = $rootScope.currentUser;
 

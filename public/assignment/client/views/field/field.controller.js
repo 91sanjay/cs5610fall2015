@@ -6,7 +6,7 @@
         .controller("FieldController", FieldController);
 
     function FieldController($scope, $location, $rootScope, FieldService) {
-        $scope.location = $location;
+        $scope.$location = $location;
         $scope.user = $rootScope.currentUser;
         $scope.selectedForm = $rootScope.selectedForm;
         $scope.fields = [];
