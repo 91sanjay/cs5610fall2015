@@ -43,9 +43,9 @@
             return deferred.promise;
         }
 
-        function deleteFormById(formId) {
+        function deleteFormById(formId, userId) {
             var deferred = $q.defer();
-            var url = '/api/assignment/form/' + formId;
+            var url = '/api/assignment/form/' + formId + '/user/' + userId;
 
             $http.delete(url)
                 .success(function(response){
@@ -57,9 +57,9 @@
             return deferred.promise;
         }
 
-        function updateFormById(formId, form) {
+        function updateFormById(formId, form, userId) {
             var deferred = $q.defer();
-            var url = '/api/assignment/form/' + formId;
+            var url = '/api/assignment/form/' + formId + '/user/' + userId;
 
             $http.put(url, form)
                 .success(function(response){

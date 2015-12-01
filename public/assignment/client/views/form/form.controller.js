@@ -6,7 +6,7 @@
         .controller("FormController", FormController);
 
     function FormController($scope, $location, $rootScope, FormService) {
-        $scope.location = $location;
+        $scope.$location = $location;
         $scope.user = $rootScope.currentUser;
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
@@ -14,6 +14,7 @@
         $scope.selectForm = selectForm;
         $scope.showFormFields = showFormFields;
         $scope.selectedForm = null;
+        $scope.forms = null;
 
         $rootScope.$on("login", function(event, user){
             $scope.user = $rootScope.currentUser = user;
@@ -21,23 +22,21 @@
         });
 
         function initForms() {
-            console.log("init");
             if ($scope.user) {
-                FormService.findAllFormsForUser($scope.user._id).then(function(forms){
-                    console.log("called "+$scope.user._id);
+                FormService.findAllFormsForUser($scope.user.id).then(function(forms){
                     $scope.forms = forms;
                 });
             }
         }
+        initForms();
 
         function addForm(formName) {
-
-            if (!checkFormsForUser($scope.user._id, formName)) {
+            if (!checkFormsForUser($scope.user.id, formName)) {
                 var form = {
                     title: formName
                 };
 
-                FormService.createFormForUser($scope.user._id, form).then(function(forms) {
+                FormService.createFormForUser($scope.user.id, form).then(function(forms) {
                     $scope.formName = "";
                     $scope.forms = forms;
                 })
@@ -47,7 +46,6 @@
         function checkFormsForUser(userId, formName) {
             var formNameExists = false;
 
-            console.log("Check");
             FormService.findAllFormsForUser(userId).then(function(forms) {
                 if (forms) {
                     for (var i = 0; i < forms.length; i++) {
@@ -64,7 +62,8 @@
         function updateForm(formName) {
             $scope.selectedForm.title = formName;
 
-            FormService.updateFormById($scope.selectedForm.id, $scope.selectedForm).then(function(forms) {
+            FormService.updateFormById($scope.selectedForm.id, $scope.selectedForm, $scope.user.id).then(function(forms) {
+                console.log(forms);
                 $scope.forms = forms;
             });
 
@@ -73,7 +72,7 @@
         }
 
         function deleteForm(id) {
-            FormService.deleteFormById(id).then(function(forms) {
+            FormService.deleteFormById(id, $scope.user.id).then(function(forms) {
                 $scope.forms = forms;
             })
         }
