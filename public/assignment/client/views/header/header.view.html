@@ -12,7 +12,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li ng-show="!user" ng-class="{'active' : $location.url().indexOf('register') !== -1}"><a href="#/register">Register</a></li>
       <li ng-show="!user" ng-class="{'active' : $location.url().indexOf('login') !== -1}"><a href="#/login">Login</a></li>
-      <li ng-show="user"><a>{{user.firstName}}</a></li>
+      <li ng-show="user"><a>{{ user.username }}</a></li>
       <li ng-show="user"><a ng-click="logout()">Logout</a></li>
     </ul>
   </div>
