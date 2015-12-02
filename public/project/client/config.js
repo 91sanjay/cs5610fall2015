@@ -7,34 +7,34 @@
 
     function Config($routeProvider) {
         $routeProvider.when("/home", {
-            templateUrl: "home/home.view.html"
+            templateUrl: "views/home/home.view.html"
         })
         .when("/register", {
-            templateUrl: "register/register.view.html",
-            controller: "RegisterController"
+            templateUrl: "views/register/register.view.html",
+            controller: "views/RegisterController"
         })
         .when("/login", {
-            templateUrl: "login/login.view.html",
+            templateUrl: "views/login/login.view.html",
             controller: "LoginController"
         })
         .when("/profile", {
-            templateUrl: "profile/profile.view.html",
+            templateUrl: "views/profile/profile.view.html",
             controller: "ProfileController"
         })
         .when("/search", {
-            templateUrl: "search/search.view.html",
+            templateUrl: "views/search/search.view.html",
             controller: "SearchController"
         })
         .when("/addListing", {
-            templateUrl: "addListing/addlisting.view.html",
+            templateUrl: "views/addListing/addlisting.view.html",
             controller: "AddListingController"
         })
         .when("/myListing", {
-            templateUrl: "myListing/mylisting.view.html",
+            templateUrl: "views/myListing/mylisting.view.html",
             controller: "MyListingController"
         })
         .when("/result", {
-            templateUrl: "result/result.view.html",
+            templateUrl: "views/result/result.view.html",
             controller: "ResultController"
         })
         .otherwise({

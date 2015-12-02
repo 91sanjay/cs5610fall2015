@@ -5,7 +5,7 @@ var app = angular.module("RentEasy", ["ngRoute"]);
 app.directive("navigation", function () {
     return {
         restrict: 'E',
-        templateUrl: 'header/header.view.html',
+        templateUrl: 'views/header/header.view.html',
         controller: 'HeaderController'
     }
 });
@@ -13,6 +13,6 @@ app.directive("navigation", function () {
 app.directive("pageFooter", function () {
     return {
         restrict: 'E',
-        templateUrl: 'footer/footer.view.html'
+        templateUrl: 'views/footer/footer.view.html'
     }
 });
