@@ -9,7 +9,7 @@
         $scope.$location = $location;
         $scope.logout = logout;
 
-        $rootScope.$on('login', function() {
+        $rootScope.$on('authenticate', function() {
            $scope.user = $rootScope.currentUser;
         });
 

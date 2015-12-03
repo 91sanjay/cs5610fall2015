@@ -31,7 +31,7 @@ module.exports = function (app, model) {
                     res.json(user);
                 });
         } else {
-            model.FindUserByAuth(username, password)
+            model.FindByAuth(username, password)
                 .then(function (user) {
                     res.json(user);
                 });
@@ -67,4 +67,4 @@ module.exports = function (app, model) {
 
         res.json(model.delete(id));
     }
-}
+};
