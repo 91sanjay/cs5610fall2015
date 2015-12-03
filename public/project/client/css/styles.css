@@ -85,6 +85,10 @@
     color: #82000B;
 }
 
+.alert-custom {
+    border-radius: 0;
+}
+
 /* Branding */
 .navbar-brand {
     color: #4B178F;

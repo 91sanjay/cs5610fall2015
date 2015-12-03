@@ -13,14 +13,14 @@
     <div id="navbar" class="navbar-collapse collapse navbar-background">
         <ul class="nav navbar-nav navbar-right">
             <li ng-class="{'active' : $location.url().indexOf('home') !== -1}"><a class="nav-link" href="#/home">Home</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('register') !== -1}"><a class="nav-link" href="#/register">Register</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('login') !== -1}"><a class="nav-link" href="#/login">Login</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('profile') !== -1}"><a class="nav-link" href="#/profile">Profile</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('addListing') !== -1}"><a class="nav-link" href="#/addListing">Add Listing</a></li>
-            <li ng-class="{'active' : $location.url().indexOf('myListing') !== -1}"><a class="nav-link" href="#/myListing">My Listings</a></li>
+            <li ng-if="!user" ng-class="{'active' : $location.url().indexOf('register') !== -1}"><a class="nav-link" href="#/register">Register</a></li>
+            <li ng-if="!user" ng-class="{'active' : $location.url().indexOf('login') !== -1}"><a class="nav-link" href="#/login">Login</a></li>
+            <li ng-if="user" ng-class="{'active' : $location.url().indexOf('profile') !== -1}"><a class="nav-link" href="#/profile">Profile</a></li>
+            <li ng-if="user" ng-class="{'active' : $location.url().indexOf('addListing') !== -1}"><a class="nav-link" href="#/addListing">Add Listing</a></li>
+            <li ng-if="user" ng-class="{'active' : $location.url().indexOf('myListing') !== -1}"><a class="nav-link" href="#/myListing">My Listings</a></li>
             <li ng-class="{'active' : $location.url().indexOf('search') !== -1}"><a class="nav-link" href="#/search">Search</a></li>
-            <li><a class="nav-link" href="#/home">Username</a></li>
-            <li><a class="nav-link" href="#/home">Logout</a></li>
+            <li ng-if="user"><a class="nav-link" href="#/home">Username</a></li>
+            <li ng-if="user"><a class="nav-link" href="#/home">Logout</a></li>
         </ul>
     </div>
 </div>
