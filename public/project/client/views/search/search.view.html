@@ -6,7 +6,7 @@
             <form class="form-horizontal">
                 <div class="form-group form-group-lg">
                     <div class="col-xs-10 search-form-input">
-                        <input class="form-control search-box" type="text" id="search" placeholder="Enter a zipcode">
+                        <input class="form-control search-box" type="text" id="search" placeholder="Enter a zipcode, neighbourhood or city">
                     </div>
                     <a href="#/search" class="btn btn-custom col-xs-2 search-button"><span
                             class="glyphicon glyphicon-search"
@@ -31,20 +31,17 @@
 
 
                     <div class="description col-xs-11 col-sm-11">
-                        <h4>440 Huntington Ave, Boston, MA-02115</h4>
+                        <h4 ng-model="fullAddress">{{ fullAddress }}</h4>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                           Deleniti dolor dolores doloribus eius eligendi enim id inventore
-                           iusto mollitia odit officiis possimus quibusdam quod
-                           reprehenderit tempora temporibus vel velit, veniam?</p>
+                        <p ng-model="description">{{ description }}</p>
                     </div>
                     <ul class="list-inline col-xs-12 details">
-                        <li>Bed 2</li>
-                        <li>Bath 1</li>
+                        <li ng-model="bed">Bed {{ bed }}</li>
+                        <li ng-model="bath">Bath {{ bath }}</li>
                     </ul>
                     <ul class="list-inline col-xs-12 details">
-                        <li>Pets No</li>
-                        <li>Heat Not Included</li>
+                        <li ng-model="pets">Pets {{ pets? 'Yes': 'No' }}</li>
+                        <li ng-model="heat">Heat {{ heat? 'Included': 'Not Included' }}</li>
                     </ul>
                 </div>
             </li>
