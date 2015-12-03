@@ -16,7 +16,7 @@
         });
 
         function update() {
-            UserService.updateUser($scope.user.id, $scope.user).then(function (updatedUser) {
+            UserService.updateUser($scope.user._id, $scope.user).then(function (updatedUser) {
                 $rootScope.currentUser = updatedUser;
                 $scope.user = updatedUser;
                 $scope.updated = true;
