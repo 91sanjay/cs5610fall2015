@@ -1,11 +1,20 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+var passport = require('passport');
 var mongoose = require('mongoose');
+var localStrategy = requrie('passport-local').Strategy;
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+var app = express();
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({ secret: 'this is the secret' }));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -18,6 +27,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 var db = mongoose.connect(connectionString);
 require("./public/assignment/server/app.js")(app, mongoose, db);
+require("./public/project/server/app.js")(app, mongoose, db, passport, localStrategy);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
