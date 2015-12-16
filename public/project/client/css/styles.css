@@ -254,6 +254,10 @@
     margin-top: 150px;
 }
 
+.type {
+    padding-left: 0;
+}
+
 /* Search view */
 .search-container {
     margin-bottom: 60px;
@@ -278,6 +282,10 @@
 .search-image {
     width: 100%;
     height: 100%;
+}
+
+.city {
+    padding-left: 0;
 }
 
 /* Results View */
@@ -566,5 +574,9 @@
 
     .location {
         height: 350px;
+    }
+
+    .zip {
+        padding-left: 0;
     }
 }

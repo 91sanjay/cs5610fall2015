@@ -29,7 +29,7 @@
             templateUrl: "views/addListing/addlisting.view.html",
             controller: "AddListingController"
         })
-        .when("/myListing", {
+        .when("/myListing/:userid", {
             templateUrl: "views/myListing/mylisting.view.html",
             controller: "MyListingController"
         })

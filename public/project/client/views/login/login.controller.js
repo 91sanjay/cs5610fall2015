@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+(function () {
     angular
         .module("RentEasy")
         .controller("LoginController", LoginController);
@@ -10,9 +10,9 @@
         $scope.login = login;
         $scope.loginerror = false;
 
-        function login() {
-            var userName = $scope.userName;
-            var password = $scope.password;
+        function login(user) {
+            var userName = $scope.user.username;
+            var password = $scope.user.password;
 
             if (!userName || !password) {
                 $scope.loginErrorMessage = "Please enter your username and password";
@@ -32,5 +32,19 @@
                     }
                 });
         }
+
+        //function login(user) {
+        //    UserService.Login(user).then(function (user) {
+        //        if (user) {
+        //            $scope.user = user;
+        //            $rootScope.currentUser = user;
+        //            $rootScope.$broadcast('authenticate', user);
+        //            $location.path("/home");
+        //        } else {
+        //            $scope.loginerror = true;
+        //            $scope.loginErrorMessage = "Oh Snap! Your credentials did not match our records. Please try again!"
+        //        }
+        //    });
+        //}
     }
 })();

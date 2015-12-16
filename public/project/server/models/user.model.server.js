@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function (mongoose, db, localStrategy) {
+module.exports = function (mongoose, db) {
     var q = require('q');
     var UserSchema = require('./user.schema.server.js')(mongoose);
     var RentUserModel = db.model('RentUserModel', UserSchema);
@@ -9,8 +9,8 @@ module.exports = function (mongoose, db, localStrategy) {
         Create: createUser,
         Update: updateUser,
         Delete: deleteUser,
-        FindAll: findAllUsers,
-        FindById: findUserById,
+        FindAllUsers: findAllUsers,
+        FindUserById: findUserById,
         FindByUserName: findUserByName,
         FindByAuth: findUserByAuth
     };
@@ -83,6 +83,7 @@ module.exports = function (mongoose, db, localStrategy) {
         RentUserModel.findById({_id: id}, function (err, user) {
             if (err) {
                 deferred.reject(err);
+                console.log(err);
             } else {
                 deferred.resolve(user);
             }

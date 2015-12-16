@@ -1,17 +1,60 @@
 "use strict";
 
-module.exports = function (app, model) {
+module.exports = function (app, model, passport, LocalStrategy) {
     app.post("/api/project/user", createUser);
     app.get("/api/project/user", findUsers);
     app.get("/api/project/user/:id", findUserById);
     app.put("/api/project/user/:id", updateUser);
     app.delete("/api/project/user/:id", deleteUser);
+    //app.get("/api/project/user/loggedin", loggedin);
+    //app.get("/api/project/user/logout", logout);
+    //
+    //passport.use(new LocalStrategy(
+    //    function (username, password, done) {
+    //        model
+    //            .FindByAuth(username, password)
+    //            .then(function (user) {
+    //                if (!user) {
+    //                    return done(null, false);
+    //                }
+    //                return done(null, user);
+    //            });
+    //    }));
+    //
+    //passport.serializeUser(function (user, done) {
+    //    done(null, user);
+    //});
+    //
+    //passport.deserializeUser(function (user, done) {
+    //    //model.FindUserById(user._id).then(function (user) {
+    //    //    done(null, user);
+    //    //}, function (err) {
+    //    //    console.log(err);
+    //    //    done(err);
+    //    //});
+    //
+    //    done(null, user);
+    //});
+    //
+    //app.post("/api/project/user/login", passport.authenticate('local'), function (req, res) {
+    //    var user = req.user;
+    //    res.json(user);
+    //});
+    //
+    //function loggedin(req, res) {
+    //    res.send(req.isAuthenticated() ? req.user : '0');
+    //}
+    //
+    //function logout(req, res) {
+    //    req.logOut();
+    //    res.send(200);
+    //}
 
     function createUser(req, res) {
         var user = req.body;
 
         model.Create(user)
-            .then(function(newUser) {
+            .then(function (newUser) {
                 res.json(newUser);
             });
     }
@@ -21,7 +64,7 @@ module.exports = function (app, model) {
         var password = req.query.password;
 
         if (username == null && password == null) {
-            model.FindAll()
+            model.FindAllUsers()
                 .then(function (users) {
                     res.json(users);
                 });
@@ -41,7 +84,7 @@ module.exports = function (app, model) {
     function findUserById(req, res) {
         var id = req.params.id;
 
-        model.FindById(id)
+        model.FindUserById(id)
             .then(function (user) {
                 res.json(user);
             });

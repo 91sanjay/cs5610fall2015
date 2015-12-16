@@ -6,9 +6,12 @@ module.exports = function(mongoose) {
         propertyType: {type: String, enum: ['APT','CON','TOW']},
         bed: Number,
         bath: Number,
+        formattedAddress: String,
         address: String,
         city: String,
         state: String,
+        neighborhood: String,
+        locality: String,
         zip: String,
         price: Number,
         heat: Boolean,
@@ -16,6 +19,8 @@ module.exports = function(mongoose) {
         gym: Boolean,
         parking: Boolean,
         description: String,
-        images:[]
-    }, {collection:''});
+        images: [String]
+    }, {collection: 'cs5610.project.listing'});
+
+    return ListingSchema;
 };

@@ -1,5 +1,6 @@
-
+(function() {
     var placeSearch, autocomplete;
+
     var componentForm = {
         street_number: 'short_name',
         route: 'long_name',
@@ -84,3 +85,5 @@
     //function print(r) {
     //    console.log("response "+ r["status"]);
     //}
+
+})();
