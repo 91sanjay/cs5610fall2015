@@ -14,10 +14,6 @@
         $scope.noListings = false;
         $scope.listing = null;
 
-        $rootScope.$on("authenticate", function (event, user) {
-            $scope.user = $rootScope.currentUser = user;
-        });
-
         function init() {
             ListingService.FindAll($scope.user._id)
                 .then(function (userListings) {

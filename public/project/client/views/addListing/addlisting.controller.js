@@ -13,11 +13,6 @@
         $scope.user = $rootScope.currentUser;
         $scope.createError = null;
 
-        console.log($scope.user);
-        $rootScope.$on("authenticate", function (event, user) {
-            $scope.user = $rootScope.currentUser = user;
-        });
-
         $scope.placedetails = {
             street_number: null,
             route: null,
@@ -71,8 +66,6 @@
             listing['gym'] = $scope.gym;
             listing['parking'] = $scope.parking;
             listing['description'] = $scope.description;
-
-            console.log(listing);
 
             ListingService.Create(listing, $scope.user._id)
                 .then(function (listing) {

@@ -57,7 +57,7 @@
                 templateUrl: "views/result/result.view.html",
                 controller: "ResultController",
                 resolve: {
-                    loggedin: checkLoggedin
+                    loggedin: verifyCurrentUser
                 }
             })
             .otherwise("/",{
@@ -71,7 +71,6 @@
     var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
-        console.log("called");
         $http.get('/api/project/loggedin').success(function(user)
         {
             if (user !== '0')
@@ -100,6 +99,7 @@
                 if (user !== '0')
                 {
                     $rootScope.currentUser = user;
+                    console.log($rootScope.currentUser);
                 }
                 deferred.resolve();
             });

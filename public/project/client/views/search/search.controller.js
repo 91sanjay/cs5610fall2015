@@ -15,10 +15,6 @@
         $scope.searchTerm = null;
         $scope.listings = null;
 
-        $rootScope.$on("authenticate", function (event, user) {
-            $scope.user = $rootScope.currentUser = user;
-        });
-
         function search() {
             if ($scope.searchTerm) {
                 ListingService.SearchByLocality($scope.searchTerm)
@@ -41,8 +37,6 @@
         function showDetails(listing) {
             $scope.listing = listing;
             $rootScope.selectedListing = listing;
-            $rootScope.$broadcast("listing", listing);
-            console.log(listing);
 
             $location.url('/result');
         }

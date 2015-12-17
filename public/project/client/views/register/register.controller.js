@@ -52,7 +52,6 @@
                                 UserService.Create(user)
                                     .then(function (newUser) {
                                         $rootScope.currentUser = newUser;
-                                        $rootScope.$broadcast('authenticate', newUser);
                                         $location.url('/home');
                                     });
                             }

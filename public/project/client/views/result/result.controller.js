@@ -12,13 +12,6 @@
         $scope.marker = null;
         $scope.pinListing = pinListing;
 
-        $rootScope.$on("listing", function(event, listing){
-            $scope.selectedListing = $rootScope.selectedListing = listing;
-            var mapcoords = {latitude: $scope.selectedListing.place_details.lat, longitude: $scope.selectedListing.place_details.lng};
-            $scope.map = {center: mapcoords, zoom: 16};
-            $scope.marker = {id:0, coords: mapcoords};
-        });
-
         function initMap() {
             if ($rootScope.selectedListing) {
                 $scope.selectedListing = $rootScope.selectedListing;
