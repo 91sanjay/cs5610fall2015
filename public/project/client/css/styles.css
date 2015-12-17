@@ -115,6 +115,10 @@
     font-weight: 700;
 }
 
+.navbar-nav {
+    margin-right: 15px;
+}
+
 .navbar-nav > .active > a {
     color: #6720C4;
     background-color: #eeeeee;
@@ -286,6 +290,10 @@
 
 .city {
     padding-left: 0;
+}
+
+.min-height {
+    min-height: 300px;
 }
 
 /* Results View */

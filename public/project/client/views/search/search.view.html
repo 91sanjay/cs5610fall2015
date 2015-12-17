@@ -16,9 +16,9 @@
         </div>
     </div>
 
-    <div class="col-xs-11 col-md-9 col-centered">
-        <ul class="property-list">
-            <li class="property clearfix">
+    <div class="col-xs-11 col-md-9 col-centered min-height">
+        <ul ng-if="listings" class="property-list">
+            <li class="property clearfix" ng-repeat="listing in listings">
                 <div class="property-image col-xs-12 col-sm-4">
                     <img src="img/living.jpg" alt="Living" class="search-image"/>
                 </div>
@@ -31,17 +31,17 @@
 
 
                     <div class="description col-xs-11 col-sm-11">
-                        <h4 ng-model="fullAddress">{{ fullAddress }}</h4>
+                        <h4 ng-model="fullAddress">{{ listing.place_details.formatted_address }}</h4>
 
-                        <p ng-model="description">{{ description }}</p>
+                        <p ng-model="description">{{ listing.description }}</p>
                     </div>
                     <ul class="list-inline col-xs-12 details">
-                        <li ng-model="bed">Bed {{ bed }}</li>
-                        <li ng-model="bath">Bath {{ bath }}</li>
+                        <li ng-model="bed">Bed {{ listing.bed }}</li>
+                        <li ng-model="bath">Bath {{ listing.bath }}</li>
                     </ul>
                     <ul class="list-inline col-xs-12 details">
-                        <li ng-model="pets">Pets {{ pets? 'Yes': 'No' }}</li>
-                        <li ng-model="heat">Heat {{ heat? 'Included': 'Not Included' }}</li>
+                        <li ng-model="pets">Pets {{ listing.pets }}</li>
+                        <li ng-model="heat">Heat {{ listing.heat }}</li>
                     </ul>
                 </div>
             </li>
