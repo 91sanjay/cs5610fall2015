@@ -5,12 +5,13 @@
         .module("RentEasy")
         .controller("AddListingController", AddListingController);
 
-    function AddListingController($scope, $location, $rootScope, $routeParams) {
+    function AddListingController($scope, $location, $rootScope, $routeParams, ListingService) {
         $scope.$location = $location;
         $scope.place = null;
         $scope.autocompleteResponse = autocompleteResponse;
         $scope.addListing = addListing;
         $scope.user = $rootScope.currentUser;
+        $scope.createError = null;
 
         $rootScope.$on("authenticate", function (event, user) {
             $scope.user = $rootScope.currentUser = user;
@@ -62,7 +63,7 @@
             listing['userid'] = $scope.user._id,
             listing['bed'] = $scope.bed;
             listing['bath'] = $scope.bath;
-            listing['place_detials'] = $scope.placedetails;
+            listing['place_details'] = $scope.placedetails;
             listing['rent'] = $scope.rent;
             listing['heat'] = $scope.heat;
             listing['pets'] = $scope.pets;
@@ -71,6 +72,15 @@
             listing['description'] = $scope.description;
 
             console.log(listing);
+
+            ListingService.Create(listing, $scope.user._id)
+                .then(function(listing) {
+                    if (listing) {
+                        $location.url('myListing/'+$scope.user._id);
+                    } else {
+                        $scope.createError = true;
+                    }
+                });
         }
     }
 })();

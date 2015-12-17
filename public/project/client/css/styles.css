@@ -305,28 +305,39 @@
     background-color: #ffffff;
     padding: 0 20px 30px 20px;
     box-shadow: 2px 2px 2px #eeeeee;
+    margin-bottom: 20px;
 }
 
 .indicator {
-    position: absolute;
-    right: 0;
-    top: 50%;
+    position: absolute !important;
+    right: 25px;
+    margin-top: 90px;
     font-size: 2em;
     color: #A62B38;
 }
 
 .indicator:hover {
     font-size: 2.3em;
+    color: #6D0000;
     transition: 0.2s font-size;
 }
 
 #edit-listing {
     position: absolute;
-    top: 0;
-    right: 5px;
+    right: 25px;
 }
 
 .edit-button {
+    border-radius: 1px;
+}
+
+#delete-listing {
+    position: absolute;
+    margin-top: 40px;
+    right: 25px;
+}
+
+.delete-button {
     border-radius: 1px;
 }
 
@@ -533,7 +544,6 @@
 
     .description h4 {
         margin-top: 10px;
-        font-size: 1em;
     }
 
     .description p {
@@ -578,5 +588,22 @@
 
     .zip {
         padding-left: 0;
+    }
+
+    .property-image {
+        width: 400px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .description h4 {
+        width: 100%;
+        font-size: 1.4em;
+    }
+
+    .property-image {
+        width: 250px;
+        height: 150px;
     }
 }

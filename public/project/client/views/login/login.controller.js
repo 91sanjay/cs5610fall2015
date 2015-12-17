@@ -19,8 +19,8 @@
                 $scope.loginerror = true;
             }
 
-            UserService.FindByAuth(userName, password).
-                then(function(user) {
+            UserService.FindByAuth(userName, password)
+                .then(function(user) {
                     if (user) {
                         $scope.user = user;
                         $rootScope.currentUser = user;

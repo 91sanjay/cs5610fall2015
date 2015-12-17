@@ -1,23 +1,18 @@
 "use strict";
 
 module.exports = function(mongoose) {
+    var PlaceSchema = require('./place.schema.server.js')(mongoose);
     var ListingSchema = new mongoose.Schema({
-        userId: String,
+        userid: String,
         propertyType: {type: String, enum: ['APT','CON','TOW']},
-        bed: Number,
-        bath: Number,
-        formattedAddress: String,
-        address: String,
-        city: String,
-        state: String,
-        neighborhood: String,
-        locality: String,
-        zip: String,
-        price: Number,
-        heat: Boolean,
-        pet: Boolean,
-        gym: Boolean,
-        parking: Boolean,
+        bed: String,
+        bath: String,
+        place_details: PlaceSchema,
+        rent: String,
+        heat: String,
+        pets: String,
+        gym: String,
+        parking: String,
         description: String,
         images: [String]
     }, {collection: 'cs5610.project.listing'});
