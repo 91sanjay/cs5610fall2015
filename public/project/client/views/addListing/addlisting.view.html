@@ -1,20 +1,22 @@
 <div class="main page-offset">
     <div class="form-panel col-xs-11 col-sm-8 col-centered">
+        <div class="alert alert-danger" ng-show="!user" role="alert">You have to be logged in to add a listing. <a href="#/login">Login</a> to continue</div>
         <h3>Add Listing</h3>
 
         <div class="form-holder">
-            <form action="">
+            <form name="listingForm" novalidate>
                 <div class="listing-details clearfix">
                     <div class="form-group col-xs-11 col-sm-3 type">
-                        <label for="property-type">Type</label>
-                        <select name="propertyType" id="property-type" ng-model="propertyType" class="form-control">
+                        <label for="property-type">Type *</label>
+                        <select name="propertyType" id="property-type" ng-model="propertyType" class="form-control" required>
                             <option value="APT">Apartment</option>
                             <option value="CON">Condo</option>
                             <option value="TOW">Town House</option>
-                        </select></div>
+                        </select>
+                    </div>
                     <div class="form-group col-xs-11 col-sm-3">
-                        <label for="bed">Bed</label>
-                        <select name="bed" id="bed" ng-model="bed" class="form-control">
+                        <label for="bed">Bed *</label>
+                        <select name="bed" id="bed" ng-model="bed" class="form-control" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -23,8 +25,8 @@
                         </select>
                     </div>
                     <div class="form-group col-xs-11 col-sm-4">
-                        <label for="bath">Bath</label>
-                        <select name="" id="bath" ng-model="bath" class="form-control">
+                        <label for="bath">Bath *</label>
+                        <select name="" id="bath" ng-model="bath" class="form-control" required>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -33,7 +35,7 @@
                         </select>
                     </div>
                     <div class="form-group col-xs-11 no-padding">
-                        <label for="autocomplete">Address</label>
+                        <label for="autocomplete">Address *</label>
                         <input id="autocomplete" g-places-autocomplete class="form-control" ng-model="place"
                                ng-change="autocompleteResponse()" placeholder="Enter your address" type="text"/>
 
@@ -64,7 +66,7 @@
                         </div>
                     </div>
                     <div class="form-group col-xs-11 no-padding">
-                        <label for="rent">Rent/mo</label>
+                        <label for="rent">Rent/mo *</label>
                         <input type="text" id="rent" class="form-control" ng-model="rent" placeholder="$XXXX"/>
                     </div>
                 </div>
@@ -102,60 +104,60 @@
                     <div class="misc-details clearfix">
                         <div class="form-wrap col-xs-12 no-padding">
                             <div class="form-group col-sm-6 no-padding">
-                                <label for="heat-included">Heat Included?</label>
+                                <label for="heat-included">Heat Included? *</label>
 
                                 <div class="radio" id="heat-included">
                                     <label>
-                                        <input type="radio" name="heat" id="heat" ng-model="heat" value="yes">Yes
+                                        <input type="radio" name="heat" id="heat" ng-model="heat" ng-value="true">Yes
                                     </label>
 
                                     <label class="option-no">
-                                        <input type="radio" name="heat" id="no-heat" ng-model="heat" value="no">No
+                                        <input type="radio" name="heat" id="no-heat" ng-model="heat" ng-value="false">No
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6 no-padding">
-                                <label for="heat-included">Pets?</label>
+                                <label for="heat-included">Pets? *</label>
 
                                 <div class="radio" id="pets-allowed">
                                     <label>
-                                        <input type="radio" name="pets" id="pets" ng-model="pets" value="yes">Yes
+                                        <input type="radio" name="pets" id="pets" ng-model="pets" ng-value="true">Yes
                                     </label>
 
                                     <label class="option-no">
-                                        <input type="radio" name="pets" id="no-pets" ng-model="pets" value="no">No
+                                        <input type="radio" name="pets" id="no-pets" ng-model="pets" ng-value="false">No
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-wrap col-xs-12 no-padding">
                             <div class="form-group col-sm-6 no-padding">
-                                <label for="heat-included">Gym?</label>
+                                <label for="heat-included">Gym? *</label>
 
                                 <div class="radio" id="gym-available">
                                     <label>
-                                        <input type="radio" name="gym" id="gym" ng-model="gym" value="yes">
+                                        <input type="radio" name="gym" id="gym" ng-model="gym" ng-value="true">
                                         Yes
                                     </label>
 
                                     <label class="option-no">
-                                        <input type="radio" name="gym" id="no-gym" ng-model="gym" value="no">
+                                        <input type="radio" name="gym" id="no-gym" ng-model="gym" ng-value="false">
                                         No
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group col-sm-6 no-padding">
-                                <label for="heat-included">Parking?</label>
+                                <label for="heat-included">Parking? *</label>
 
                                 <div class="radio" id="parking-available">
                                     <label>
-                                        <input type="radio" name="parking" id="parking" ng-model="parking" value="yes">
+                                        <input type="radio" name="parking" id="parking" ng-model="parking" ng-value="false">
                                         Yes
                                     </label>
 
                                     <label class="option-no">
                                         <input type="radio" name="parking" id="no-parking" ng-model="parking"
-                                               value="no">
+                                               ng-value="false">
                                         No
                                     </label>
                                 </div>
@@ -168,7 +170,7 @@
                                       placeholder="(Optional) Anything you want to add about your property"></textarea>
                         </div>
 
-                        <a class="btn btn-custom" ng-click="addListing()" role="button" id="add-listing">Add Listing</a>
+                        <a class="btn btn-custom" ng-click="addListing()" role="button" ng-disabled="!user || !listingForm.$valid" id="add-listing">Add Listing</a>
                     </div>
                 </div>
             </form>

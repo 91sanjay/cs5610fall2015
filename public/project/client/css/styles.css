@@ -317,10 +317,14 @@
     margin-bottom: 20px;
 }
 
+.indicator-wrap {
+    vertical-align: middle;
+}
+
 .indicator {
     position: absolute !important;
     right: 25px;
-    margin-top: 90px;
+    top: 40%;
     font-size: 2em;
     color: #A62B38;
 }
@@ -415,15 +419,16 @@
 
 .pin {
     position: absolute;
-    top: 63px;
-    right: 5px;
-    font-size: 2.5em !important;
+    top: 50px;
+    right:-10px;
+    font-size: 3em !important;
     color: #AD000E;
 }
 
 .pin:hover {
     color: #7B000A;
-    font-size: 2.8em !important;
+    font-size: 3.5em !important;
+    transition: all 0.2s ease;
 }
 
 .gallery {
@@ -535,6 +540,10 @@
         display: inline-block;
         margin-left: 20px;
     }
+
+    .indicator {
+        top: 30%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -578,10 +587,6 @@
         margin-top: 40px;
     }
 
-    .pin {
-        top: 40px;
-    }
-
     .images a {
         padding: 15px 5px;
     }
@@ -602,6 +607,11 @@
     .property-image {
         width: 400px;
         height: 250px;
+    }
+
+    .indicator {
+        top: 50%;
+        font-size: 2.5em;
     }
 }
 

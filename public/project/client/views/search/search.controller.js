@@ -10,6 +10,8 @@
         $scope.user = $rootScope.currentUser;
         $scope.search = search;
         $scope.checkSearchTerm = checkSearchTerm;
+        $scope.showDetails = showDetails;
+        $scope.listing = null;
         $scope.searchTerm = null;
         $scope.listings = null;
 
@@ -34,6 +36,16 @@
             if ($scope.searchTerm == "" || $scope.searchTerm == null) {
                 $scope.listings = null;
             }
+        }
+
+        function showDetails(listing) {
+            $scope.listing = listing;
+            $rootScope.listing = listing;
+            $rootScope.$broadcast("listing", listing);
+            console.log("breadcasting");
+            console.log(listing);
+
+            $location.url('/result');
         }
     }
 })();

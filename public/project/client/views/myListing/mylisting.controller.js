@@ -9,8 +9,10 @@
         $scope.$location = $location;
         $scope.user = $rootScope.currentUser;
         $scope.deleteListing = deleteListing;
+        $scope.showDetails = showDetails;
         $scope.listings = null;
         $scope.noListings = false;
+        $scope.listing = null;
 
         $rootScope.$on("authenticate", function (event, user) {
             $scope.user = $rootScope.currentUser = user;
@@ -40,6 +42,15 @@
                         $scope.noListings = true;
                     }
                 })
+        }
+
+        function showDetails(listing) {
+            $scope.listing = listing;
+            $rootScope.listing = listing;
+
+            $rootScope.$broadcast('listing_detail', listing);
+
+            $location.url('#/result');
         }
     }
 })();

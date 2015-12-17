@@ -2,7 +2,7 @@
     <a href="#/search" class="back-button"><i class="fa fa-arrow-circle-o-left back"></i></a>
 
     <div class="col-xs-11 col-sm-10 col-md-9 col-centered result-container">
-        <div class="property-address"><h2>440 Huntington Ave, Boston, MA - 02115</h2></div>
+        <div class="property-address"><h2>{{ listing.place_details.formatted_address }}</h2></div>
         <div class="detail-container">
             <span class="glyphicon glyphicon-pushpin pin" title="log in" aria-hidden="true"></span>
 
@@ -54,9 +54,7 @@
             </div>
             <div class="property-details">
                 <div class="property-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, aliquid beatae delectus
-                    eligendi eum excepturi expedita facere magni minima natus, nihil quisquam quos repudiandae, sed sit
-                    suscipit tenetur veniam voluptatum.
+                    {{ listing.description }}
                 </div>
                 <div class="property-info clearfix">
                     <div class="heading"><h4>Property Details</h4></div>
@@ -64,22 +62,22 @@
                     <div class="price col-xs-12 col-md-3">
                         <h2>Price</h2>
 
-                        <h3>$2750</h3>
+                        <h3>{{ listing.rent | currency }}</h3>
                     </div>
                     <div class="features col-xs-12 col-md-9">
                         <div class="property-features col-xs-10 col-sm-6">
                             <table class="table table-condensed no-border">
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Type</h5></td>
-                                    <td><p>Apartment</p></td>
+                                    <td><p>{{ listing.propertyType }}</p></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Bed</h5></td>
-                                    <td><p>2</p></td>
+                                    <td><p>{{ listing.bed }}</p></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Bath</h5></td>
-                                    <td><p>1</p></td>
+                                    <td><p>{{ listing.bath }}</p></td>
                                 </tr>
                             </table>
                         </div>
@@ -87,7 +85,7 @@
                             <table class="table table-condensed no-border">
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Heat</h5></td>
-                                    <td><i class="fa fa-fire icon-type fire"></i></td>
+                                    <td><i class="fa fa-fire icon-type" ng-class="{{ listing.heat == 'yes' ? fire: '' }}"></i></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Parking</h5></td>
