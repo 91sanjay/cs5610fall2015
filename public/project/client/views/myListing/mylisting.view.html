@@ -1,6 +1,6 @@
 <div class="main page-offset">
     <div class="container-fluid">
-        <section class="row col-xs-12 col-sm-10 col-md-8 my-listing col-centered">
+        <section class="row col-xs-12 col-sm-10 col-md-9 my-listing col-centered">
             <h3>My Listings</h3>
             <ul class="property-list">
                 <li class="property clearfix" ng-repeat="listing in listings">
@@ -12,7 +12,7 @@
                         <span class="glyphicon glyphicon-trash" ng-click="deleteListing(listing._id)"
                               aria-hidden="true"></span>
                     </button>
-                    <a ng-click="showDetails(listing)" class="indicator"><span class="glyphicon glyphicon-chevron-right"
+                    <a ng-click="showDetails(listing)" class="indicator-wrap"><span class="glyphicon glyphicon-chevron-right indicator"
                                                                aria-hidden="true"></span></a>
 
                     <div class="property-image col-xs-12 col-sm-4">
@@ -36,7 +36,7 @@
                 </li>
             </ul>
         </section>
-        <section class="row col-xs-12 col-sm-10 col-md-8 pinned col-centered">
+        <section class="row col-xs-12 col-sm-10 col-md-9 pinned col-centered">
             <h3>Pinned</h3>
             <ul class="property-list">
                 <li class="property pinned-property clearfix">

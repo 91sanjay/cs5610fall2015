@@ -2,9 +2,9 @@
     <a href="#/search" class="back-button"><i class="fa fa-arrow-circle-o-left back"></i></a>
 
     <div class="col-xs-11 col-sm-10 col-md-9 col-centered result-container">
-        <div class="property-address"><h2>{{ listing.place_details.formatted_address }}</h2></div>
+        <div class="property-address"><h2>{{ selectedListing.place_details.formatted_address }}</h2></div>
         <div class="detail-container">
-            <span class="glyphicon glyphicon-pushpin pin" title="log in" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-pushpin pin" title="log in to pin" ng-click="pinListing(selectedListing)" aria-hidden="true"></span>
 
             <div class="gallery">
                 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -54,7 +54,7 @@
             </div>
             <div class="property-details">
                 <div class="property-description">
-                    {{ listing.description }}
+                    {{ selectedListing.description }}
                 </div>
                 <div class="property-info clearfix">
                     <div class="heading"><h4>Property Details</h4></div>
@@ -62,22 +62,22 @@
                     <div class="price col-xs-12 col-md-3">
                         <h2>Price</h2>
 
-                        <h3>{{ listing.rent | currency }}</h3>
+                        <h3>{{ selectedListing.rent | currency }}</h3>
                     </div>
                     <div class="features col-xs-12 col-md-9">
                         <div class="property-features col-xs-10 col-sm-6">
                             <table class="table table-condensed no-border">
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Type</h5></td>
-                                    <td><p>{{ listing.propertyType }}</p></td>
+                                    <td><p>{{ selectedListing.propertyType }}</p></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Bed</h5></td>
-                                    <td><p>{{ listing.bed }}</p></td>
+                                    <td><p>{{ selectedListing.bed }}</p></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Bath</h5></td>
-                                    <td><p>{{ listing.bath }}</p></td>
+                                    <td><p>{{ selectedListing.bath }}</p></td>
                                 </tr>
                             </table>
                         </div>
@@ -85,7 +85,7 @@
                             <table class="table table-condensed no-border">
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Heat</h5></td>
-                                    <td><i class="fa fa-fire icon-type" ng-class="{{ listing.heat == 'yes' ? fire: '' }}"></i></td>
+                                    <td><i ng-class="{'fa fa-fire icon-type fire': selectedListing.heat == true, 'fa fa-fire icon-type': selectedListing.heat == false}"></i></td>
                                 </tr>
                                 <tr class="t-row">
                                     <td class="col-xs-4"><h5>Parking</h5></td>
@@ -104,13 +104,11 @@
                     </div>
                 </div>
             </div>
-            <div class="location">
-                <div class="heading">
-                    <h4>Location</h4>
-                </div>
-                <iframe frameborder="0" style="border:0"
-                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJI71_5SF644kRgvIqS9yeElg&key=AIzaSyCptU483PEilwQ-mVaj6R3BJ7jkW7MNKVg"
-                        allowfullscreen></iframe>
+            <div class="map_canvas">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                    <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
             </div>
             <div class="places">
                 <div class="heading">

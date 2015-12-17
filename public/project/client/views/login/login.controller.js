@@ -10,7 +10,31 @@
         $scope.login = login;
         $scope.loginerror = false;
 
+        //function login(user) {
+        //    var userName = $scope.user.username;
+        //    var password = $scope.user.password;
+        //
+        //    if (!userName || !password) {
+        //        $scope.loginErrorMessage = "Please enter your username and password";
+        //        $scope.loginerror = true;
+        //    }
+        //
+        //    UserService.FindByAuth(userName, password)
+        //        .then(function (user) {
+        //            if (user) {
+        //                $scope.user = user;
+        //                $rootScope.currentUser = user;
+        //                $rootScope.$broadcast('authenticate', user);
+        //                $location.url("/home");
+        //            } else {
+        //                $scope.loginerror = true;
+        //                $scope.loginErrorMessage = "Oh Snap! Your credentials did not match our records. Please try again!"
+        //            }
+        //        });
+        //}
+
         function login(user) {
+            $scope.loginerror = false;
             var userName = $scope.user.username;
             var password = $scope.user.password;
 
@@ -19,8 +43,8 @@
                 $scope.loginerror = true;
             }
 
-            UserService.FindByAuth(userName, password)
-                .then(function (user) {
+            if ($scope.loginerror == false) {
+                UserService.Login(user).then(function (user) {
                     if (user) {
                         $scope.user = user;
                         $rootScope.currentUser = user;
@@ -31,20 +55,7 @@
                         $scope.loginErrorMessage = "Oh Snap! Your credentials did not match our records. Please try again!"
                     }
                 });
+            }
         }
-
-        //function login(user) {
-        //    UserService.Login(user).then(function (user) {
-        //        if (user) {
-        //            $scope.user = user;
-        //            $rootScope.currentUser = user;
-        //            $rootScope.$broadcast('authenticate', user);
-        //            $location.path("/home");
-        //        } else {
-        //            $scope.loginerror = true;
-        //            $scope.loginErrorMessage = "Oh Snap! Your credentials did not match our records. Please try again!"
-        //        }
-        //    });
-        //}
     }
 })();

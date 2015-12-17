@@ -89,6 +89,10 @@
     border-radius: 0;
 }
 
+.glyphicon {
+    z-index: 500;
+}
+
 /* Branding */
 .navbar-brand {
     color: #4B178F;
@@ -311,6 +315,7 @@
 }
 
 .property {
+    position: relative;
     background-color: #ffffff;
     padding: 0 20px 30px 20px;
     box-shadow: 2px 2px 2px #eeeeee;
@@ -324,7 +329,7 @@
 .indicator {
     position: absolute !important;
     right: 25px;
-    top: 40%;
+    top: 55%;
     font-size: 2em;
     color: #A62B38;
 }
@@ -342,6 +347,7 @@
 
 .edit-button {
     border-radius: 1px;
+    z-index: 500;
 }
 
 #delete-listing {
@@ -352,6 +358,8 @@
 
 .delete-button {
     border-radius: 1px;
+    margin-bottom: 25px;
+    z-index: 500;
 }
 
 .description h4 {
@@ -529,6 +537,20 @@
     margin-top: 80px;
 }
 
+#map_canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+#map_canvas {
+    position: relative;
+}
+
+.angular-google-map-container {
+    height: 400px;
+}
+
 /* Responsive layout styles */
 @media screen and (max-width: 992px) {
     .property-address h2 {
@@ -542,7 +564,7 @@
     }
 
     .indicator {
-        top: 30%;
+        top: 60%;
     }
 }
 
@@ -558,6 +580,14 @@
 
     .nav-link {
         text-align: center;
+    }
+
+    .hero-panel {
+        margin: 0;
+    }
+
+    .main {
+        padding-bottom: 10px;
     }
 
     .description h4 {
@@ -616,6 +646,14 @@
 }
 
 @media screen and (max-width: 500px) {
+    .image-holder {
+        height: 250px;
+    }
+
+    .search-prompt {
+        padding-top: 85px;
+    }
+
     .description h4 {
         width: 100%;
         font-size: 1.4em;

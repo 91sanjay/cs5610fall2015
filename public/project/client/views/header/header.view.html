@@ -13,31 +13,31 @@
     <div id="navbar" class="navbar-collapse collapse navbar-background">
         <ul class="nav navbar-nav navbar-right">
             <li ng-class="{'active' : $location.url().indexOf('home') !== -1}">
-                <a class="nav-link" href="#/home">Home</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/home">Home</a>
             </li>
             <li ng-if="!user" ng-class="{'active' : $location.url().indexOf('register') !== -1}">
-                <a class="nav-link" href="#/register">Register</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/register">Register</a>
             </li>
             <li ng-if="!user" ng-class="{'active' : $location.url().indexOf('login') !== -1}">
-                <a class="nav-link" href="#/login">Login</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/login">Login</a>
             </li>
             <li ng-if="user" ng-class="{'active' : $location.url().indexOf('profile') !== -1}">
-                <a class="nav-link" href="#/profile">Profile</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/profile">Profile</a>
             </li>
             <li ng-if="user" ng-class="{'active' : $location.url().indexOf('addListing') !== -1}">
-                <a class="nav-link" href="#/addListing">Add Listing</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/addListing">Add Listing</a>
             </li>
             <li ng-if="user" ng-class="{'active' : $location.url().indexOf('myListing') !== -1}">
-                <a class="nav-link" href="#/myListing/{{ user._id }}">My Listings</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/myListing/{{ user._id }}">My Listings</a>
             </li>
             <li ng-class="{'active' : $location.url().indexOf('search') !== -1}">
-                <a class="nav-link" href="#/search">Search</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" href="#/search">Search</a>
             </li>
             <li ng-if="user">
-                <a class="nav-link">{{ user.username }}</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link">{{ user.username }}</a>
             </li>
             <li ng-if="user">
-                <a class="nav-link" ng-click="logout()">Logout</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" ng-click="logout()">Logout</a>
             </li>
         </ul>
     </div>

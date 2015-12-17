@@ -80,7 +80,7 @@ module.exports = function (mongoose, db) {
     function findUserById(id) {
         var deferred = q.defer();
 
-        RentUserModel.findById({_id: id}, function (err, user) {
+        RentUserModel.findById(id, function (err, user) {
             if (err) {
                 deferred.reject(err);
                 console.log(err);

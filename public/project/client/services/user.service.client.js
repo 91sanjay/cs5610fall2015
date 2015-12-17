@@ -12,9 +12,9 @@
             Delete: deleteUser,
             FindAll: findAllUsers,
             FindByAuth: findUserByAuth,
-            Login: login
-            //LoggedIn: userLoggedin,
-            //Logout: logout
+            Login: login,
+            Logout: logout,
+            Pin: pin
         };
 
         return service;
@@ -96,7 +96,7 @@
 
         function login(user) {
             var deferred = $q.defer();
-            var url = '/api/project/user/login';
+            var url = '/api/project/login';
 
 
             $http.post(url, user)
@@ -112,26 +112,27 @@
             return deferred.promise;
         }
 
-        //function userLoggedin() {
-        //    var deferred = $q.defer();
-        //
-        //    $http.get('/api/project/user/loggedin')
-        //        .success(function (response) {
-        //            deferred.resolve(response);
-        //        });
-        //
-        //    return deferred.promise;
-        //}
-        //
-        //function logout() {
-        //    var deferred = $q.defer();
-        //
-        //    $http.get('/api/project/user/logout')
-        //        .success(function (response) {
-        //            deferred.resolve(response);
-        //        });
-        //
-        //    return deferred.promise;
-        //}
+        function logout() {
+            var deferred = $q.defer();
+
+            $http.post('/api/project/logout')
+                .success(function (response) {
+                    deferred.resolve(response);
+                });
+
+            return deferred.promise;
+        }
+
+        function pin(userid, listingid) {
+            var deferred = $q.defer();
+            var url = '/api/project/user/'+ userid + '/listing/' + listingid;
+
+            $http.get(url)
+                .success(function (response) {
+                    deferred.resolve(response);
+                });
+
+            return deferred.promise;
+        }
     }
 })();

@@ -11,9 +11,9 @@
         $scope.updated = false;
         $scope.user = $rootScope.currentUser;
 
-        $rootScope.$on("authenticate", function (event, user) {
-            $scope.user = $rootScope.currentUser = user;
-        });
+        //$rootScope.$on("authenticate", function (event, user) {
+        //    $scope.user = $rootScope.currentUser = user;
+        //});
 
         function update() {
             UserService.Update($scope.user._id, $scope.user).then(function (updatedUser) {

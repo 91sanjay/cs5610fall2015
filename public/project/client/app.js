@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("RentEasy", ["ngRoute", "google.places"]);
+var app = angular.module("RentEasy", ["ngRoute", "google.places", "uiGmapgoogle-maps"]);
 
 app.directive("navigation", function () {
     return {

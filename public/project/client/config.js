@@ -6,10 +6,18 @@
         .config(Config);
 
     function Config($routeProvider) {
-        $routeProvider.when("/home", {
-            templateUrl: "views/home/home.view.html"
-        })
-            .when("/register", {
+        $routeProvider
+            .when("/", {redirectTo: "/home",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
+            })
+            .when("/home", {
+                templateUrl: "views/home/home.view.html",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
+            }).when("/register", {
                 templateUrl: "views/register/register.view.html",
                 controller: "RegisterController"
             })
@@ -19,26 +27,84 @@
             })
             .when("/profile", {
                 templateUrl: "views/profile/profile.view.html",
-                controller: "ProfileController"
+                controller: "ProfileController",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
             })
             .when("/search", {
                 templateUrl: "views/search/search.view.html",
-                controller: "SearchController"
+                controller: "SearchController",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
             })
             .when("/addListing", {
                 templateUrl: "views/addListing/addlisting.view.html",
-                controller: "AddListingController"
+                controller: "AddListingController",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
             })
             .when("/myListing/:userid", {
                 templateUrl: "views/myListing/mylisting.view.html",
-                controller: "MyListingController"
+                controller: "MyListingController",
+                resolve: {
+                    loggedin: verifyCurrentUser
+                }
             })
             .when("/result", {
                 templateUrl: "views/result/result.view.html",
-                controller: "ResultController"
+                controller: "ResultController",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .otherwise({
-                redirectTo: "/home"
+            .otherwise("/",{
+                redirectTo: "/home",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             });
     }
+
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        console.log("called");
+        $http.get('/api/project/loggedin').success(function(user)
+        {
+            if (user !== '0')
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+            else
+            {
+                $rootScope.errorMessage = 'You need to log in.';
+                deferred.reject();
+                $location.url('/login');
+            }
+        });
+
+        return deferred.promise;
+    };
+
+    var verifyCurrentUser = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+
+        $http.get("/api/project/loggedin")
+            .success(function(user){
+                $rootScope.errorMessage = null;
+                if (user !== '0')
+                {
+                    $rootScope.currentUser = user;
+                }
+                deferred.resolve();
+            });
+
+        return deferred.promise;
+    };
 })();
+

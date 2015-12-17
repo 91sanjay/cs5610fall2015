@@ -13,6 +13,7 @@
         $scope.user = $rootScope.currentUser;
         $scope.createError = null;
 
+        console.log($scope.user);
         $rootScope.$on("authenticate", function (event, user) {
             $scope.user = $rootScope.currentUser = user;
         });

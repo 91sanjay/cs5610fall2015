@@ -5,7 +5,7 @@
         .module("RentEasy")
         .controller("MyListingController", MyListingController);
 
-    function MyListingController($scope, $location, $rootScope, $routeParams, ListingService) {
+    function MyListingController($scope, $location, $rootScope, UserService, ListingService) {
         $scope.$location = $location;
         $scope.user = $rootScope.currentUser;
         $scope.deleteListing = deleteListing;
@@ -46,11 +46,11 @@
 
         function showDetails(listing) {
             $scope.listing = listing;
-            $rootScope.listing = listing;
+            $rootScope.selectedListing = listing;
 
-            $rootScope.$broadcast('listing_detail', listing);
+            $rootScope.$broadcast('listing', listing);
 
-            $location.url('#/result');
+            $location.url('/result');
         }
     }
 })();

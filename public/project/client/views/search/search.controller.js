@@ -40,9 +40,8 @@
 
         function showDetails(listing) {
             $scope.listing = listing;
-            $rootScope.listing = listing;
+            $rootScope.selectedListing = listing;
             $rootScope.$broadcast("listing", listing);
-            console.log("breadcasting");
             console.log(listing);
 
             $location.url('/result');

@@ -6,49 +6,52 @@ module.exports = function (app, model, passport, LocalStrategy) {
     app.get("/api/project/user/:id", findUserById);
     app.put("/api/project/user/:id", updateUser);
     app.delete("/api/project/user/:id", deleteUser);
-    //app.get("/api/project/user/loggedin", loggedin);
-    //app.get("/api/project/user/logout", logout);
-    //
-    //passport.use(new LocalStrategy(
-    //    function (username, password, done) {
-    //        model
-    //            .FindByAuth(username, password)
-    //            .then(function (user) {
-    //                if (!user) {
-    //                    return done(null, false);
-    //                }
-    //                return done(null, user);
-    //            });
-    //    }));
-    //
-    //passport.serializeUser(function (user, done) {
-    //    done(null, user);
-    //});
-    //
-    //passport.deserializeUser(function (user, done) {
-    //    //model.FindUserById(user._id).then(function (user) {
-    //    //    done(null, user);
-    //    //}, function (err) {
-    //    //    console.log(err);
-    //    //    done(err);
-    //    //});
-    //
-    //    done(null, user);
-    //});
-    //
-    //app.post("/api/project/user/login", passport.authenticate('local'), function (req, res) {
-    //    var user = req.user;
-    //    res.json(user);
-    //});
-    //
-    //function loggedin(req, res) {
-    //    res.send(req.isAuthenticated() ? req.user : '0');
-    //}
-    //
-    //function logout(req, res) {
-    //    req.logOut();
-    //    res.send(200);
-    //}
+    app.get("/api/project/loggedin", loggedin);
+    app.post("/api/project/logout", logout);
+
+
+    function loggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
+    }
+
+    passport.use(new LocalStrategy(
+        function (username, password, done) {
+            model
+                .FindByAuth(username, password)
+                .then(function (user) {
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                }, function(err) {
+                    done(err);
+                });
+        }));
+
+    app.post("/api/project/login", passport.authenticate('local'), function (req, res) {
+        var user = req.user;
+        res.json(user);
+    });
+
+    passport.serializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function (user, done) {
+        model.FindUserById(user._id).then(function (user) {
+            done(null, user);
+        }, function (err) {
+            console.log(err);
+            done(err);
+        });
+
+        //done(null, user);
+    });
 
     function createUser(req, res) {
         var user = req.body;

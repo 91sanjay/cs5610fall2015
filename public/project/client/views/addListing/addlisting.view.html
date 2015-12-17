@@ -1,8 +1,9 @@
 <div class="main page-offset">
     <div class="form-panel col-xs-11 col-sm-8 col-centered">
-        <div class="alert alert-danger" ng-show="!user" role="alert">You have to be logged in to add a listing. <a href="#/login">Login</a> to continue</div>
+        <div class="alert alert-danger" ng-if="!user" role="alert">You have to be logged in to add a listing. <a href="#/login">Login</a> to continue</div>
         <h3>Add Listing</h3>
 
+        <!--{{user}}-->
         <div class="form-holder">
             <form name="listingForm" novalidate>
                 <div class="listing-details clearfix">

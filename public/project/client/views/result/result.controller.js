@@ -5,12 +5,42 @@
         .module("RentEasy")
         .controller("ResultController", ResultController);
 
-    function ResultController($scope, $location, $rootScope) {
+    function ResultController($scope, $location, $rootScope, UserService) {
         $scope.$location = $location;
-        $scope.listing = $rootScope.selectedListing;
+        $scope.selectedListing = $rootScope.selectedListing;
+        $scope.map = null;
+        $scope.marker = null;
+        $scope.pinListing = pinListing;
 
         $rootScope.$on("listing", function(event, listing){
-            $scope.listing = $rootScope.selectedListing = listing;
+            $scope.selectedListing = $rootScope.selectedListing = listing;
+            var mapcoords = {latitude: $scope.selectedListing.place_details.lat, longitude: $scope.selectedListing.place_details.lng};
+            $scope.map = {center: mapcoords, zoom: 16};
+            $scope.marker = {id:0, coords: mapcoords};
         });
+
+        function initMap() {
+            if ($rootScope.selectedListing) {
+                $scope.selectedListing = $rootScope.selectedListing;
+
+                var mapcoords = {latitude: $scope.selectedListing.place_details.lat, longitude: $scope.selectedListing.place_details.lng};
+                $scope.map = {center: mapcoords, zoom: 16};
+                $scope.marker = {id:0, coords: mapcoords};
+            }
+        }
+
+        initMap();
+
+        function pinListing(listing) {
+            var id = listing._id;
+
+            UserService.Pin($rootScope.user._id,id).then(function(user) {
+                if (user) {
+                    console.log("pinned");
+                } else {
+                    console.log("not able to pin");
+                }
+            });
+        }
     }
 })();

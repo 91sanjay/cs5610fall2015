@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express();
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -6,13 +7,12 @@ var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
-var app = express();
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610';
 
 //app.use(express.logger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(session({secret: process.env.SESSION_SECRET || 'this is the secret', resave: true, saveUninitialized: true}));
+app.use(session({secret: 'this is the secret', resave: true, saveUninitialized: true}));
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
