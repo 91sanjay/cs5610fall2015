@@ -35,7 +35,5 @@
                 $scope.listings = null;
             }
         }
-
-
     }
 })();

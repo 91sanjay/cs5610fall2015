@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+(function () {
     angular
         .module("RentEasy")
         .controller("AddListingController", AddListingController);
@@ -60,7 +60,7 @@
             var listing = {};
 
             listing['propertyType'] = $scope.propertyType;
-            listing['userid'] = $scope.user._id,
+            listing['userid'] = $scope.user._id;
             listing['bed'] = $scope.bed;
             listing['bath'] = $scope.bath;
             listing['place_details'] = $scope.placedetails;
@@ -74,9 +74,9 @@
             console.log(listing);
 
             ListingService.Create(listing, $scope.user._id)
-                .then(function(listing) {
+                .then(function (listing) {
                     if (listing) {
-                        $location.url('myListing/'+$scope.user._id);
+                        $location.url('myListing/' + $scope.user._id);
                     } else {
                         $scope.createError = true;
                     }

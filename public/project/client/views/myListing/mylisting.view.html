@@ -7,11 +7,14 @@
                     <button type="button" class="btn btn-danger edit-button" id="edit-listing" aria-label="Pencil">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-danger delete-button" id="delete-listing" ng-click="deleteListing(listing._id)" aria-label="Trash">
-                        <span class="glyphicon glyphicon-trash" ng-click="deleteListing(listing._id)" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-danger delete-button" id="delete-listing"
+                            ng-click="deleteListing(listing._id)" aria-label="Trash">
+                        <span class="glyphicon glyphicon-trash" ng-click="deleteListing(listing._id)"
+                              aria-hidden="true"></span>
                     </button>
                     <a href="#/result" class="indicator"><span class="glyphicon glyphicon-chevron-right"
-                                             aria-hidden="true"></span></a>
+                                                               aria-hidden="true"></span></a>
+
                     <div class="property-image col-xs-12 col-sm-4">
                         <img src="img/living.jpg" alt="Living" class="search-image"/>
                     </div>
@@ -22,12 +25,12 @@
                             <p> {{ listing.description }} </p>
                         </div>
                         <ul class="list-inline col-xs-12 details">
-                            <li>Bed {{ listing.bed }} </li>
-                            <li>Bath {{ listing.bath }} </li>
+                            <li>Bed {{ listing.bed }}</li>
+                            <li>Bath {{ listing.bath }}</li>
                         </ul>
                         <ul class="list-inline col-xs-12 details">
-                            <li>Pets {{ listing.pets }} </li>
-                            <li>Heat {{ listing.heat }} </li>
+                            <li>Pets {{ listing.pets }}</li>
+                            <li>Heat {{ listing.heat }}</li>
                         </ul>
                     </div>
                 </li>

@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+(function () {
     angular
         .module("RentEasy")
         .controller("HeaderController", HeaderController);
@@ -9,8 +9,8 @@
         $scope.$location = $location;
         $scope.logout = logout;
 
-        $rootScope.$on('authenticate', function() {
-           $scope.user = $rootScope.currentUser;
+        $rootScope.$on('authenticate', function () {
+            $scope.user = $rootScope.currentUser;
         });
 
         function logout() {

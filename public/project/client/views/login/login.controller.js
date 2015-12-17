@@ -20,7 +20,7 @@
             }
 
             UserService.FindByAuth(userName, password)
-                .then(function(user) {
+                .then(function (user) {
                     if (user) {
                         $scope.user = user;
                         $rootScope.currentUser = user;

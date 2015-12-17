@@ -1,6 +1,6 @@
 "use strict";
 
-(function(){
+(function () {
     angular
         .module("RentEasy")
         .factory("UserService", UserService);
@@ -24,10 +24,10 @@
             var url = '/api/project/user';
 
             $http.post(url, user)
-                .success(function(response){
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error){
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -39,10 +39,10 @@
             var url = '/api/project/user/' + userId;
 
             $http.put(url, user)
-                .success(function(response){
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error){
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -54,10 +54,10 @@
             var url = '/api/project/user/' + userId;
 
             $http.delete(url, user)
-                .success(function(response){
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error){
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -69,10 +69,10 @@
             var url = '/api/project/user/';
 
             $http.get(url)
-                .success(function(response){
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error){
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -84,10 +84,10 @@
             var url = '/api/project/user?username=' + userName + "&password=" + password;
 
             $http.get(url)
-                .success(function(response){
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error){
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -100,13 +100,13 @@
 
 
             $http.post(url, user)
-                .success(function(response) {
+                .success(function (response) {
                     console.log("success");
                     deferred.resolve(response);
                 })
-                .error(function(error) {
-                   deferred.reject(error);
-                    console.log("error is"+error);
+                .error(function (error) {
+                    deferred.reject(error);
+                    console.log("error is" + error);
                 });
 
             return deferred.promise;

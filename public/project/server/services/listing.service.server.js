@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(app, model) {
+module.exports = function (app, model) {
     app.post('/api/project/listing/:userid', createListing);
     app.get('/api/project/listing/:userid', findAllListingsForUser);
     app.delete('/api/project/listing/:listingid/user/:userid', deleteListing);
@@ -11,7 +11,7 @@ module.exports = function(app, model) {
         var userid = req.params.userid;
 
         model.Create(listing)
-            .then(function(newListing) {
+            .then(function (newListing) {
                 res.json(newListing);
             });
     }
@@ -20,7 +20,7 @@ module.exports = function(app, model) {
         var userid = req.params.userid;
 
         model.FindAll(userid)
-            .then(function(listings) {
+            .then(function (listings) {
                 res.json(listings);
             });
     }
@@ -30,7 +30,7 @@ module.exports = function(app, model) {
         var userid = req.params.userid;
 
         model.Delete(listingid, userid)
-            .then(function(listings) {
+            .then(function (listings) {
                 res.json(listings);
             });
     }

@@ -214,6 +214,7 @@
     padding-bottom: 10px;
     border-bottom: 2px dashed #eeeeee;
 }
+
 .form-holder label {
     font-family: 'Open Sans', sans-serif;
 }
@@ -433,7 +434,7 @@
     margin: 0 auto;
 }
 
-.images a{
+.images a {
     padding: 5px 5px;
 }
 
@@ -581,7 +582,7 @@
         top: 40px;
     }
 
-    .images a{
+    .images a {
         padding: 15px 5px;
     }
 

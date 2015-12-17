@@ -1,6 +1,6 @@
 "use strict";
 
-(function(){
+(function () {
     angular
         .module("RentEasy")
         .factory("ListingService", ListingService);
@@ -22,10 +22,10 @@
             var url = '/api/project/listing/' + userid;
 
             $http.post(url, listing)
-                .success(function(response) {
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error) {
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -41,10 +41,10 @@
             var url = '/api/project/listing/' + listingid + '/user/' + userid;
 
             $http.delete(url)
-                .success(function(response) {
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error) {
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -56,10 +56,10 @@
             var url = '/api/project/listing/' + userid;
 
             $http.get(url)
-                .success(function(response) {
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error) {
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -76,10 +76,10 @@
             console.log(url);
 
             $http.get(url)
-                .success(function(response) {
+                .success(function (response) {
                     deferred.resolve(response);
                 })
-                .error(function(error) {
+                .error(function (error) {
                     deferred.reject(error);
                 });
 

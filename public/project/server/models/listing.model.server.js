@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(mongoose, db) {
+module.exports = function (mongoose, db) {
     var q = require('q');
     var ListingSchema = require('./listing.schema.server.js')(mongoose);
     var RentListingModel = db.model('RentListingModel', ListingSchema);

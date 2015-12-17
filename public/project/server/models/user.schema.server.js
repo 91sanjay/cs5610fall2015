@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(mongoose) {
+module.exports = function (mongoose) {
     var UserSchema = new mongoose.Schema({
         firstname: String,
         lastname: String,

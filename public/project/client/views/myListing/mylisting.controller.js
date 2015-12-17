@@ -1,6 +1,6 @@
 "use strict";
 
-(function() {
+(function () {
     angular
         .module("RentEasy")
         .controller("MyListingController", MyListingController);
@@ -18,7 +18,7 @@
 
         function init() {
             ListingService.FindAll($scope.user._id)
-                .then(function(userListings) {
+                .then(function (userListings) {
                     if (userListings) {
                         $scope.listings = userListings;
                     } else {
@@ -33,7 +33,7 @@
 
         function deleteListing(listingid) {
             ListingService.Delete(listingid, $scope.user._id)
-                .then(function(userListings) {
+                .then(function (userListings) {
                     if (userListings) {
                         $scope.listings = userListings;
                     } else {

@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(mongoose) {
+module.exports = function (mongoose) {
     var PlaceSchema = new mongoose.Schema({
         street_number: String,
         route: String,

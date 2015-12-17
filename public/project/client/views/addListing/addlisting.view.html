@@ -36,6 +36,7 @@
                         <label for="autocomplete">Address</label>
                         <input id="autocomplete" g-places-autocomplete class="form-control" ng-model="place"
                                ng-change="autocompleteResponse()" placeholder="Enter your address" type="text"/>
+
                         <div class="form-group no-padding">
                             <label for="addr1">Address 1 </label>
                             <input type="text" id="addr1" class="form-control"
@@ -48,15 +49,18 @@
                         </div>
                         <div class="form-group col-xs-5 col-sm-3 city">
                             <label for="city">City</label>
-                            <input type="text" id="city" class="form-control" value="{{ placedetails.locality }}" placeholder="City" disabled/>
+                            <input type="text" id="city" class="form-control" value="{{ placedetails.locality }}"
+                                   placeholder="City" disabled/>
                         </div>
                         <div class="form-group col-xs-5 col-sm-3">
                             <label for="state">State</label>
-                            <input type="text" id="state" class="form-control" value="{{ placedetails.administrative_area_level_1 }}" placeholder="State" disabled/>
+                            <input type="text" id="state" class="form-control"
+                                   value="{{ placedetails.administrative_area_level_1 }}" placeholder="State" disabled/>
                         </div>
                         <div class="form-group col-xs-12 col-sm-4 zip">
                             <label for="zip">Zip Code</label>
-                            <input type="text" id="zip" class="form-control" value="{{ placedetails.postal_code }}" placeholder="XXXXX" disabled/>
+                            <input type="text" id="zip" class="form-control" value="{{ placedetails.postal_code }}"
+                                   placeholder="XXXXX" disabled/>
                         </div>
                     </div>
                     <div class="form-group col-xs-11 no-padding">
@@ -150,7 +154,8 @@
                                     </label>
 
                                     <label class="option-no">
-                                        <input type="radio" name="parking" id="no-parking" ng-model="parking" value="no">
+                                        <input type="radio" name="parking" id="no-parking" ng-model="parking"
+                                               value="no">
                                         No
                                     </label>
                                 </div>
@@ -158,7 +163,8 @@
                         </div>
                         <div class="form-group col-xs-11 no-padding">
                             <label for="desc">Description</label>
-                            <textarea name="description" id="desc" cols="12" rows="3" class="form-control" ng-model="descirption"
+                            <textarea name="description" id="desc" cols="12" rows="3" class="form-control"
+                                      ng-model="descirption"
                                       placeholder="(Optional) Anything you want to add about your property"></textarea>
                         </div>
 
