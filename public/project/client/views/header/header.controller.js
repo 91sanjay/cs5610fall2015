@@ -15,8 +15,7 @@
         });
 
         function logout() {
-            UserService.Logout(function()
-            {
+            UserService.Logout().then(function() {
                 $rootScope.currentUser = null;
                 $scope.user = null;
                 $location.url("/home");
