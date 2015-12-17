@@ -70,8 +70,20 @@
 
         }
 
-        function searchListingByLocality() {
+        function searchListingByLocality(searchTerm) {
+            var deferred = $q.defer();
+            var url = '/api/project/search?searchterm=' + searchTerm;
+            console.log(url);
 
+            $http.get(url)
+                .success(function(response) {
+                    deferred.resolve(response);
+                })
+                .error(function(error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
         }
     }
 })();

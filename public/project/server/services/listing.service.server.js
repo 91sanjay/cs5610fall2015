@@ -4,6 +4,7 @@ module.exports = function(app, model) {
     app.post('/api/project/listing/:userid', createListing);
     app.get('/api/project/listing/:userid', findAllListingsForUser);
     app.delete('/api/project/listing/:listingid/user/:userid', deleteListing);
+    app.get('/api/project/search', searchListings);
 
     function createListing(req, res) {
         var listing = req.body;
@@ -32,5 +33,21 @@ module.exports = function(app, model) {
             .then(function(listings) {
                 res.json(listings);
             });
+    }
+
+    function searchListings(req, res) {
+        var searchTerm = req.query.searchterm;
+
+        if (isNaN(searchTerm)) {
+            model.SearchByLocality(searchTerm)
+                .then(function (listings) {
+                    res.json(listings);
+                });
+        } else {
+            model.SearchByZipCode(searchTerm)
+                .then(function (listings) {
+                    res.json(listings);
+                });
+        }
     }
 };

@@ -8,7 +8,9 @@ module.exports = function(mongoose, db) {
     var api = {
         Create: createListing,
         FindAll: findAllForUser,
-        Delete: deleteListing
+        Delete: deleteListing,
+        SearchByLocality: searchByLocality,
+        SearchByZipCode: searchByZipcode
     };
 
     return api;
@@ -52,6 +54,34 @@ module.exports = function(mongoose, db) {
                     deferred.resolve(listings);
                 }
             });
+        });
+
+        return deferred.promise;
+    }
+
+    function searchByLocality(searchTerm) {
+        var deferred = q.defer();
+
+        RentListingModel.find({'place_details.locality': searchTerm}, function (err, listings) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(listings);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function searchByZipcode(searchTerm) {
+        var deferred = q.defer();
+
+        RentListingModel.find({'place_details.postal_code': searchTerm.toString()}, function (err, listings) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(listings);
+            }
         });
 
         return deferred.promise;

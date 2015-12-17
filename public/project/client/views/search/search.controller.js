@@ -5,13 +5,37 @@
         .module("RentEasy")
         .controller("SearchController", SearchController);
 
-    function SearchController($scope, $location) {
+    function SearchController($scope, $location, $rootScope, ListingService) {
         $scope.$location = $location;
-        $scope.fullAddress = "440 Huntington Ave, Boston, MA-02115";
-        $scope.description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Deleniti dolor dolores doloribus eius eligendi enim id inventoreiusto mollitia odit officiis possimus quibusdam quodreprehenderit tempora temporibus vel velit, veniam?";
-        $scope.bed = 2;
-        $scope.bath = 1;
-        $scope.pets = false;
-        $scope.heat = false;
+        $scope.user = $rootScope.currentUser;
+        $scope.search = search;
+        $scope.checkSearchTerm = checkSearchTerm;
+        $scope.searchTerm = null;
+        $scope.listings = null;
+
+        $rootScope.$on("authenticate", function (event, user) {
+            $scope.user = $rootScope.currentUser = user;
+        });
+
+        function search() {
+            if ($scope.searchTerm) {
+                ListingService.SearchByLocality($scope.searchTerm)
+                    .then(function (listings) {
+                        if (listings) {
+                            $scope.listings = listings;
+                        } else {
+                            console.log("suggest a different method of search")
+                        }
+                    });
+            }
+        }
+
+        function checkSearchTerm() {
+            if ($scope.searchTerm == "" || $scope.searchTerm == null) {
+                $scope.listings = null;
+            }
+        }
+
+
     }
 })();
