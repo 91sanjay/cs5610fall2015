@@ -34,7 +34,7 @@
         function pinListing(listing) {
             var id = listing._id;
 
-            UserService.Pin($rootScope.user._id,id).then(function(user) {
+            UserService.Pin($rootScope.user._id, id).then(function(user) {
                 if (user) {
                     console.log("pinned");
                 } else {

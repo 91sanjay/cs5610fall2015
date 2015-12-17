@@ -9,7 +9,6 @@ module.exports = function (app, model, passport, LocalStrategy) {
     app.get("/api/project/loggedin", loggedin);
     app.post("/api/project/logout", logout);
 
-
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
     }
