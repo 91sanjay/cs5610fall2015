@@ -31,13 +31,13 @@
                 <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/myListing/{{ user._id }}">My Listings</a>
             </li>
             <li ng-class="{'active' : $location.url().indexOf('search') !== -1}">
-                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" href="#/search">Search</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" href="#/search">Search</a>
             </li>
             <li ng-if="user">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link">{{ user.username }}</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse.in" class="nav-link">{{ user.username }}</a>
             </li>
             <li ng-if="user">
-                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse" ng-click="logout()">Logout</a>
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.in" ng-click="logout()">Logout</a>
             </li>
         </ul>
     </div>
