@@ -178,7 +178,7 @@ module.exports = function (app, mongoose, db) {
         FormModel.findById(id, function (err, form) {
             var fields = form.fields;
 
-            for (var i = 0; i < fields.lenght; i++) {
+            for (var i = 0; i < fields.length; i++) {
                 if (fields[i]._id == fieldId) {
                     fields[i] = field;
                 }

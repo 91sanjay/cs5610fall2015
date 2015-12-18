@@ -9,10 +9,10 @@ module.exports = function (mongoose) {
         bath: String,
         place_details: PlaceSchema,
         rent: String,
-        heat: String,
-        pets: String,
-        gym: String,
-        parking: String,
+        heat: Boolean,
+        pets: Boolean,
+        gym: Boolean,
+        parking: Boolean,
         description: String,
         images: [String]
     }, {collection: 'cs5610.project.listing'});

@@ -12,7 +12,7 @@
             deleteUserById: deleteUserById,
             findAllUsers: findAllUsers,
             findUserByNameAndPassword: findUserByNameAndPassword
-        }
+        };
 
         return service;
 
