@@ -16,7 +16,7 @@
                 if ($scope.password != $scope.verifyPassword) {
                     $scope.regError = "Passwords do not match";
                 } else {
-                    UserService.FindAllUsers()
+                    UserService.FindAll()
                         .then(function (users) {
 
                             for (var i = 0; i < users.length; i++) {
