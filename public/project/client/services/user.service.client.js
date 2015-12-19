@@ -127,7 +127,7 @@
             var deferred = $q.defer();
             var url = '/api/project/user/'+ userid + '/listing/' + listingid;
 
-            $http.get(url)
+            $http.put(url)
                 .success(function (response) {
                     deferred.resolve(response);
                 });

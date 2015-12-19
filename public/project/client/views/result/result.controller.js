@@ -11,6 +11,7 @@
         $scope.map = null;
         $scope.marker = null;
         $scope.pinListing = pinListing;
+        $scope.pinerror = false;
 
         function initMap() {
             if ($rootScope.selectedListing) {
@@ -26,14 +27,25 @@
 
         function pinListing(listing) {
             var id = listing._id;
+            var pinned = null;
 
-            UserService.Pin($rootScope.user._id, id).then(function(user) {
-                if (user) {
-                    console.log("pinned");
+            if (!$rootScope.currentUser) {
+                $scope.pinerror = true;
+            } else {
+                pinned = $rootScope.currentUser.pinned;
+
+                if (pinned.indexOf(id) == -1 && !$scope.pinerror) {
+                    UserService.Pin($rootScope.currentUser._id, id).then(function(user) {
+                        if (user) {
+                            console.log("pinned");
+                        } else {
+                            console.log("not able to pin");
+                        }
+                    });
                 } else {
-                    console.log("not able to pin");
+                    console.log("already pinned");
                 }
-            });
+            }
         }
     }
 })();

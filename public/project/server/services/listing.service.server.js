@@ -2,7 +2,8 @@
 
 module.exports = function (app, model) {
     app.post('/api/project/listing/:userid', createListing);
-    app.get('/api/project/listing/:userid', findAllListingsForUser);
+    app.get('/api/project/listing/user/:userid', findAllListingsForUser);
+    app.get('/api/project/listing/:listingid', findListingById);
     app.delete('/api/project/listing/:listingid/user/:userid', deleteListing);
     app.get('/api/project/search', searchListings);
 
@@ -22,6 +23,15 @@ module.exports = function (app, model) {
         model.FindAll(userid)
             .then(function (listings) {
                 res.json(listings);
+            });
+    }
+
+    function findListingById(req, res){
+        var listingid = req.params.listingid;
+
+        model.FindById(listingid)
+            .then(function (listing) {
+                res.json(listing);
             });
     }
 

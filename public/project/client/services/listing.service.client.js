@@ -11,6 +11,7 @@
             Update: updateListing,
             Delete: deleteListing,
             FindAll: findAllListingsForUser,
+            FindById: findById,
             SearchByZip: searchListingByZip,
             SearchByLocality: searchListingByLocality
         };
@@ -53,7 +54,22 @@
 
         function findAllListingsForUser(userid) {
             var deferred = $q.defer();
-            var url = '/api/project/listing/' + userid;
+            var url = '/api/project/listing/user/' + userid;
+
+            $http.get(url)
+                .success(function (response) {
+                    deferred.resolve(response);
+                })
+                .error(function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        function findById(listingid) {
+            var deferred = $q.defer();
+            var url = '/api/project/listing/' + listingid;
 
             $http.get(url)
                 .success(function (response) {

@@ -8,6 +8,7 @@ module.exports = function (app, model, passport, LocalStrategy) {
     app.delete("/api/project/user/:id", deleteUser);
     app.get("/api/project/loggedin", loggedin);
     app.post("/api/project/logout", logout);
+    app.put("/api/project/user/:userid/listing/:listingid", pinListing);
 
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
@@ -111,5 +112,16 @@ module.exports = function (app, model, passport, LocalStrategy) {
             });
 
         res.json(model.delete(id));
+    }
+
+    function pinListing(req, res) {
+        var id = req.params.userid;
+        var listingid = req.params.listingid;
+
+        console.log(listingid);
+        model.Pin(id, listingid)
+            .then(function (user) {
+                res.json(user);
+            });
     }
 };

@@ -12,7 +12,8 @@ module.exports = function (mongoose, db) {
         FindAllUsers: findAllUsers,
         FindUserById: findUserById,
         FindByUserName: findUserByName,
-        FindByAuth: findUserByAuth
+        FindByAuth: findUserByAuth,
+        Pin: pinListing
     };
 
     return api;
@@ -112,6 +113,33 @@ module.exports = function (mongoose, db) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(user);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function pinListing(userid, listingid) {
+        var deferred = q.defer();
+
+        RentUserModel.findById(userid, function(err, user) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                console.log(user);
+                var pinned = user.pinned;
+
+                pinned.push(listingid);
+
+                user.pinned = pinned;
+
+                user.save(function (err, updatedUser) {
+                    if (err) {
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(updatedUser);
+                    }
+                });
             }
         });
 

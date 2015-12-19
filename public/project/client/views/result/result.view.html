@@ -1,6 +1,11 @@
 <div class="main page-offset">
     <a href="#/search" class="back-button"><i class="fa fa-arrow-circle-o-left back"></i></a>
 
+    <div ng-if="pinerror" class="alert alert-danger alert-dismissible alert-custom col-xs-8 col-centered" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <span> You have to log in to pin this listing </span>
+    </div>
     <div class="col-xs-11 col-sm-10 col-md-9 col-centered result-container">
         <div class="property-address"><h2>{{ selectedListing.place_details.formatted_address }}</h2></div>
         <div class="detail-container">

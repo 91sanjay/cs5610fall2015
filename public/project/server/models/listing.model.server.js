@@ -8,6 +8,7 @@ module.exports = function (mongoose, db) {
     var api = {
         Create: createListing,
         FindAll: findAllForUser,
+        FindById: findListingById,
         Delete: deleteListing,
         SearchByLocality: searchByLocality,
         SearchByZipCode: searchByZipcode
@@ -37,6 +38,20 @@ module.exports = function (mongoose, db) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(listings);
+            }
+        });
+
+        return deferred.promise;
+    }
+
+    function findListingById(listingid) {
+        var deferred = q.defer();
+
+        RentListingModel.findById(listingid, function (err, listing) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(listing);
             }
         });
 

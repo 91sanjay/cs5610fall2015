@@ -233,11 +233,11 @@
         </section>
         <section class="row col-xs-12 col-sm-10 col-md-9 pinned col-centered">
             <h3>Pinned</h3>
-            <ul class="property-list">
-                <li class="property pinned-property clearfix">
-                    <h4 class="col-xs-8 col-sm-10">440 Huntington Ave, Boston, MA - 02115</h4>
+            <ul ng-if="pinned" class="property-list">
+                <li class="property pinned-property clearfix" ng-repeat="pin in pinned">
+                    <h4 class="col-xs-8 col-sm-10">{{ pin.place_details.formatted_address }}</h4>
 
-                    <div class="col-xs-4 col-sm-2"><a href="#/result">View Details</a></div>
+                    <div class="col-xs-4 col-sm-2"><a ng-click="showDetails(pin)">View Details</a></div>
                 </li>
             </ul>
         </section>
